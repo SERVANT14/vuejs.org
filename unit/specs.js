@@ -266,8 +266,8 @@
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
-	var Directive = __webpack_require__(54)
+	var Vue = __webpack_require__(54)
+	var Directive = __webpack_require__(55)
 	var nextTick = Vue.nextTick
 
 	describe('Directive', function () {
@@ -465,9 +465,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// patch inDoc
-	__webpack_require__(55)
+	__webpack_require__(53)
 	// test cases for edge cases & bug fixes
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 
 	describe('Misc', function () {
 
@@ -521,7 +521,7 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 	var nextTick = Vue.nextTick
 	var Watcher = __webpack_require__(56)
 	var _ = Vue.util
@@ -926,7 +926,7 @@
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 
 	describe('Child API', function () {
 
@@ -1009,7 +1009,7 @@
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 	var _ = __webpack_require__(75)
 	var nextTick = _.nextTick
 
@@ -1192,7 +1192,7 @@
 	 * those are tested in transition_spec.js.
 	 */
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 	var _ = __webpack_require__(75)
 
 	if (_.inBrowser) {
@@ -1367,7 +1367,7 @@
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 
 	describe('Events API', function () {
 
@@ -1506,7 +1506,7 @@
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 	var _ = __webpack_require__(75)
 	var config = __webpack_require__(57)
 
@@ -1609,7 +1609,7 @@
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 	var _ = __webpack_require__(75)
 	var compile = __webpack_require__(58)
 
@@ -1920,7 +1920,7 @@
 /* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 	var _ = __webpack_require__(75)
 	var dirParser = __webpack_require__(59)
 	var merge = __webpack_require__(60)
@@ -2360,7 +2360,7 @@
 
 	var _ = __webpack_require__(75)
 	var compile = __webpack_require__(58)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 
 	if (_.inBrowser) {
 	  describe('v-cloak', function () {
@@ -2389,9 +2389,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// patch inDoc
-	__webpack_require__(55)
+	__webpack_require__(53)
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 
 	if (_.inBrowser) {
 	  describe('v-component', function () {
@@ -2763,7 +2763,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 
 	if (_.inBrowser) {
 	  describe('v-el', function () {
@@ -2810,7 +2810,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 
 	if (_.inBrowser) {
 	  describe('v-events', function () {
@@ -2937,7 +2937,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 
 	if (_.inBrowser) {
 	  describe('v-if', function () {
@@ -3126,7 +3126,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 
 	/**
 	 * Mock event helper
@@ -3641,7 +3641,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 
 	function trigger (target, event, process) {
 	  var e = document.createEvent('HTMLEvents')
@@ -3780,7 +3780,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 
 	if (_.inBrowser) {
 	  describe('v-partial', function () {
@@ -3900,7 +3900,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 
 	if (_.inBrowser) {
 	  describe('v-pre', function () {
@@ -3924,7 +3924,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 
 	if (_.inBrowser) {
 	  describe('v-ref', function () {
@@ -4051,9 +4051,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// patch inDoc
-	__webpack_require__(55)
+	__webpack_require__(53)
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 
 	if (_.inBrowser) {
 	  describe('v-repeat', function () {
@@ -4782,7 +4782,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 	var transition = __webpack_require__(76)
 	var def = __webpack_require__(65)
 
@@ -4816,8 +4816,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var def = __webpack_require__(67)
-	var Vue = __webpack_require__(53)
+	var def = __webpack_require__(66)
+	var Vue = __webpack_require__(54)
 
 	function checkPrefixedProp (prop) {
 	  var el = document.createElement('div')
@@ -4923,7 +4923,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var def = __webpack_require__(66)
+	var def = __webpack_require__(67)
 
 	if (_.inBrowser) {
 	  describe('v-text', function () {
@@ -4992,7 +4992,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 
 	if (_.inBrowser) {
 	  describe('v-with', function () {
@@ -5133,7 +5133,7 @@
 /* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 	var filters = __webpack_require__(77)
 
 	describe('Filters', function () {
@@ -5329,7 +5329,7 @@
 /* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 	var _ = __webpack_require__(75)
 
 	describe('Instance Events', function () {
@@ -5668,7 +5668,7 @@
 /* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 
 	describe('Instance Scope', function () {
 
@@ -6471,7 +6471,7 @@
 /* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Path = __webpack_require__(74)
+	var Path = __webpack_require__(72)
 
 	function assertPath (str, expected) {
 	  var path = Path.parse(str)
@@ -6598,7 +6598,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var templateParser = __webpack_require__(72)
+	var templateParser = __webpack_require__(73)
 	var parse = templateParser.parse
 	var testString = '<div>hello</div><p class="test">world</p>'
 
@@ -6749,9 +6749,9 @@
 /* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var textParser = __webpack_require__(73)
+	var textParser = __webpack_require__(74)
 	var config = __webpack_require__(57)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 
 	var testCases = [
 	  {
@@ -6879,7 +6879,7 @@
 /* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 	var _ = __webpack_require__(75)
 	var transition = __webpack_require__(76)
 
@@ -7682,7 +7682,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(54)
 	var merge = __webpack_require__(60)
 
 	describe('Util - Option merging', function () {
@@ -8183,6 +8183,34 @@
 /* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// PhantomJS always return false when using Element.contains
+	// on a comment node - so we have to patch the inDoc util
+	// function when running in PhantomJS.
+
+	var _ = __webpack_require__(75)
+	var inDoc = _.inDoc
+
+	_.inDoc = function (el) {
+	  if (el && el.nodeType === 8) {
+	    return manualInDoc(el)
+	  }
+	  return inDoc(el)  
+	}
+
+	function manualInDoc (el) {
+	  while (el) {
+	    if (el === document.documentElement) {
+	      return true
+	    }
+	    el = el.parentNode
+	  }
+	  return false
+	}
+
+/***/ },
+/* 54 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var _ = __webpack_require__(75)
 	var extend = _.extend
 
@@ -8269,13 +8297,13 @@
 	module.exports = _.Vue = Vue
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
 	var config = __webpack_require__(57)
 	var Watcher = __webpack_require__(56)
-	var textParser = __webpack_require__(73)
+	var textParser = __webpack_require__(74)
 	var expParser = __webpack_require__(71)
 
 	/**
@@ -8494,34 +8522,6 @@
 	}
 
 	module.exports = Directive
-
-/***/ },
-/* 55 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// PhantomJS always return false when using Element.contains
-	// on a comment node - so we have to patch the inDoc util
-	// function when running in PhantomJS.
-
-	var _ = __webpack_require__(75)
-	var inDoc = _.inDoc
-
-	_.inDoc = function (el) {
-	  if (el && el.nodeType === 8) {
-	    return manualInDoc(el)
-	  }
-	  return inDoc(el)  
-	}
-
-	function manualInDoc (el) {
-	  while (el) {
-	    if (el === document.documentElement) {
-	      return true
-	    }
-	    el = el.parentNode
-	  }
-	  return false
-	}
 
 /***/ },
 /* 56 */
@@ -8882,9 +8882,9 @@
 
 	var _ = __webpack_require__(75)
 	var config = __webpack_require__(57)
-	var textParser = __webpack_require__(73)
+	var textParser = __webpack_require__(74)
 	var dirParser = __webpack_require__(59)
-	var templateParser = __webpack_require__(72)
+	var templateParser = __webpack_require__(73)
 
 	/**
 	 * Compile a template and return a reusable composite link
@@ -9877,7 +9877,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var templateParser = __webpack_require__(72)
+	var templateParser = __webpack_require__(73)
 
 	/**
 	 * Process an element or a DocumentFragment based on a
@@ -10091,7 +10091,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var templateParser = __webpack_require__(72)
+	var templateParser = __webpack_require__(73)
 
 	module.exports = {
 
@@ -10144,26 +10144,6 @@
 
 /***/ },
 /* 66 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var _ = __webpack_require__(75)
-
-	module.exports = {
-
-	  bind: function () {
-	    this.attr = this.el.nodeType === 3
-	      ? 'nodeValue'
-	      : 'textContent'
-	  },
-
-	  update: function (value) {
-	    this.el[this.attr] = _.toString(value)
-	  }
-	  
-	}
-
-/***/ },
-/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
@@ -10265,6 +10245,26 @@
 	      return prefixes[i] + prop
 	    }
 	  }
+	}
+
+/***/ },
+/* 67 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var _ = __webpack_require__(75)
+
+	module.exports = {
+
+	  bind: function () {
+	    this.attr = this.el.nodeType === 3
+	      ? 'nodeValue'
+	      : 'textContent'
+	  },
+
+	  update: function (value) {
+	    this.el[this.attr] = _.toString(value)
+	  }
+	  
 	}
 
 /***/ },
@@ -10428,7 +10428,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Path = __webpack_require__(74)
+	var Path = __webpack_require__(72)
 	var Cache = __webpack_require__(52)
 	var expressionCache = new Cache(1000)
 
@@ -10657,444 +10657,6 @@
 
 /***/ },
 /* 72 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var _ = __webpack_require__(75)
-	var Cache = __webpack_require__(52)
-	var templateCache = new Cache(1000)
-	var idSelectorCache = new Cache(1000)
-
-	var map = {
-	  _default : [0, '', ''],
-	  legend   : [1, '<fieldset>', '</fieldset>'],
-	  tr       : [2, '<table><tbody>', '</tbody></table>'],
-	  col      : [
-	    2,
-	    '<table><tbody></tbody><colgroup>',
-	    '</colgroup></table>'
-	  ]
-	}
-
-	map.td =
-	map.th = [
-	  3,
-	  '<table><tbody><tr>',
-	  '</tr></tbody></table>'
-	]
-
-	map.option =
-	map.optgroup = [
-	  1,
-	  '<select multiple="multiple">',
-	  '</select>'
-	]
-
-	map.thead =
-	map.tbody =
-	map.colgroup =
-	map.caption =
-	map.tfoot = [1, '<table>', '</table>']
-
-	map.g =
-	map.defs =
-	map.symbol =
-	map.use =
-	map.image =
-	map.text =
-	map.circle =
-	map.ellipse =
-	map.line =
-	map.path =
-	map.polygon =
-	map.polyline =
-	map.rect = [
-	  1,
-	  '<svg ' +
-	    'xmlns="http://www.w3.org/2000/svg" ' +
-	    'xmlns:xlink="http://www.w3.org/1999/xlink" ' +
-	    'xmlns:ev="http://www.w3.org/2001/xml-events"' +
-	    'version="1.1">',
-	  '</svg>'
-	]
-
-	var tagRE = /<([\w:]+)/
-	var entityRE = /&\w+;/
-
-	/**
-	 * Convert a string template to a DocumentFragment.
-	 * Determines correct wrapping by tag types. Wrapping
-	 * strategy found in jQuery & component/domify.
-	 *
-	 * @param {String} templateString
-	 * @return {DocumentFragment}
-	 */
-
-	function stringToFragment (templateString) {
-	  // try a cache hit first
-	  var hit = templateCache.get(templateString)
-	  if (hit) {
-	    return hit
-	  }
-
-	  var frag = document.createDocumentFragment()
-	  var tagMatch = templateString.match(tagRE)
-	  var entityMatch = entityRE.test(templateString)
-
-	  if (!tagMatch && !entityMatch) {
-	    // text only, return a single text node.
-	    frag.appendChild(
-	      document.createTextNode(templateString)
-	    )
-	  } else {
-
-	    var tag    = tagMatch && tagMatch[1]
-	    var wrap   = map[tag] || map._default
-	    var depth  = wrap[0]
-	    var prefix = wrap[1]
-	    var suffix = wrap[2]
-	    var node   = document.createElement('div')
-
-	    node.innerHTML = prefix + templateString.trim() + suffix
-	    while (depth--) {
-	      node = node.lastChild
-	    }
-
-	    var child
-	    /* jshint boss:true */
-	    while (child = node.firstChild) {
-	      frag.appendChild(child)
-	    }
-	  }
-
-	  templateCache.put(templateString, frag)
-	  return frag
-	}
-
-	/**
-	 * Convert a template node to a DocumentFragment.
-	 *
-	 * @param {Node} node
-	 * @return {DocumentFragment}
-	 */
-
-	function nodeToFragment (node) {
-	  var tag = node.tagName
-	  // if its a template tag and the browser supports it,
-	  // its content is already a document fragment.
-	  if (
-	    tag === 'TEMPLATE' &&
-	    node.content instanceof DocumentFragment
-	  ) {
-	    return node.content
-	  }
-	  return tag === 'SCRIPT'
-	    ? stringToFragment(node.textContent)
-	    : stringToFragment(node.innerHTML)
-	}
-
-	// Test for the presence of the Safari template cloning bug
-	// https://bugs.webkit.org/show_bug.cgi?id=137755
-	var hasBrokenTemplate = _.inBrowser
-	  ? (function () {
-	      var a = document.createElement('div')
-	      a.innerHTML = '<template>1</template>'
-	      return !a.cloneNode(true).firstChild.innerHTML
-	    })()
-	  : false
-
-	// Test for IE10/11 textarea placeholder clone bug
-	var hasTextareaCloneBug = _.inBrowser
-	  ? (function () {
-	      var t = document.createElement('textarea')
-	      t.placeholder = 't'
-	      return t.cloneNode(true).value === 't'
-	    })()
-	  : false
-
-	/**
-	 * 1. Deal with Safari cloning nested <template> bug by
-	 *    manually cloning all template instances.
-	 * 2. Deal with IE10/11 textarea placeholder bug by setting
-	 *    the correct value after cloning.
-	 *
-	 * @param {Element|DocumentFragment} node
-	 * @return {Element|DocumentFragment}
-	 */
-
-	exports.clone = function (node) {
-	  var res = node.cloneNode(true)
-	  var i, original, cloned
-	  /* istanbul ignore if */
-	  if (hasBrokenTemplate) {
-	    original = node.querySelectorAll('template')
-	    if (original.length) {
-	      cloned = res.querySelectorAll('template')
-	      i = cloned.length
-	      while (i--) {
-	        cloned[i].parentNode.replaceChild(
-	          original[i].cloneNode(true),
-	          cloned[i]
-	        )
-	      }
-	    }
-	  }
-	  /* istanbul ignore if */
-	  if (hasTextareaCloneBug) {
-	    if (node.tagName === 'TEXTAREA') {
-	      res.value = node.value
-	    } else {
-	      original = node.querySelectorAll('textarea')
-	      if (original.length) {
-	        cloned = res.querySelectorAll('textarea')
-	        i = cloned.length
-	        while (i--) {
-	          cloned[i].value = original[i].value
-	        }
-	      }
-	    }
-	  }
-	  return res
-	}
-
-	/**
-	 * Process the template option and normalizes it into a
-	 * a DocumentFragment that can be used as a partial or a
-	 * instance template.
-	 *
-	 * @param {*} template
-	 *    Possible values include:
-	 *    - DocumentFragment object
-	 *    - Node object of type Template
-	 *    - id selector: '#some-template-id'
-	 *    - template string: '<div><span>{{msg}}</span></div>'
-	 * @param {Boolean} clone
-	 * @param {Boolean} noSelector
-	 * @return {DocumentFragment|undefined}
-	 */
-
-	exports.parse = function (template, clone, noSelector) {
-	  var node, frag
-
-	  // if the template is already a document fragment,
-	  // do nothing
-	  if (template instanceof DocumentFragment) {
-	    return clone
-	      ? template.cloneNode(true)
-	      : template
-	  }
-
-	  if (typeof template === 'string') {
-	    // id selector
-	    if (!noSelector && template.charAt(0) === '#') {
-	      // id selector can be cached too
-	      frag = idSelectorCache.get(template)
-	      if (!frag) {
-	        node = document.getElementById(template.slice(1))
-	        if (node) {
-	          frag = nodeToFragment(node)
-	          // save selector to cache
-	          idSelectorCache.put(template, frag)
-	        }
-	      }
-	    } else {
-	      // normal string template
-	      frag = stringToFragment(template)
-	    }
-	  } else if (template.nodeType) {
-	    // a direct node
-	    frag = nodeToFragment(template)
-	  }
-
-	  return frag && clone
-	    ? exports.clone(frag)
-	    : frag
-	}
-
-/***/ },
-/* 73 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Cache = __webpack_require__(52)
-	var config = __webpack_require__(57)
-	var dirParser = __webpack_require__(59)
-	var regexEscapeRE = /[-.*+?^${}()|[\]\/\\]/g
-	var cache, tagRE, htmlRE, firstChar, lastChar
-
-	/**
-	 * Escape a string so it can be used in a RegExp
-	 * constructor.
-	 *
-	 * @param {String} str
-	 */
-
-	function escapeRegex (str) {
-	  return str.replace(regexEscapeRE, '\\$&')
-	}
-
-	/**
-	 * Compile the interpolation tag regex.
-	 *
-	 * @return {RegExp}
-	 */
-
-	function compileRegex () {
-	  config._delimitersChanged = false
-	  var open = config.delimiters[0]
-	  var close = config.delimiters[1]
-	  firstChar = open.charAt(0)
-	  lastChar = close.charAt(close.length - 1)
-	  var firstCharRE = escapeRegex(firstChar)
-	  var lastCharRE = escapeRegex(lastChar)
-	  var openRE = escapeRegex(open)
-	  var closeRE = escapeRegex(close)
-	  tagRE = new RegExp(
-	    firstCharRE + '?' + openRE +
-	    '(.+?)' +
-	    closeRE + lastCharRE + '?',
-	    'g'
-	  )
-	  htmlRE = new RegExp(
-	    '^' + firstCharRE + openRE +
-	    '.*' +
-	    closeRE + lastCharRE + '$'
-	  )
-	  // reset cache
-	  cache = new Cache(1000)
-	}
-
-	/**
-	 * Parse a template text string into an array of tokens.
-	 *
-	 * @param {String} text
-	 * @return {Array<Object> | null}
-	 *               - {String} type
-	 *               - {String} value
-	 *               - {Boolean} [html]
-	 *               - {Boolean} [oneTime]
-	 */
-
-	exports.parse = function (text) {
-	  if (config._delimitersChanged) {
-	    compileRegex()
-	  }
-	  var hit = cache.get(text)
-	  if (hit) {
-	    return hit
-	  }
-	  if (!tagRE.test(text)) {
-	    return null
-	  }
-	  var tokens = []
-	  var lastIndex = tagRE.lastIndex = 0
-	  var match, index, value, first, oneTime, partial
-	  /* jshint boss:true */
-	  while (match = tagRE.exec(text)) {
-	    index = match.index
-	    // push text token
-	    if (index > lastIndex) {
-	      tokens.push({
-	        value: text.slice(lastIndex, index)
-	      })
-	    }
-	    // tag token
-	    first = match[1].charCodeAt(0)
-	    oneTime = first === 0x2A // *
-	    partial = first === 0x3E // >
-	    value = (oneTime || partial)
-	      ? match[1].slice(1)
-	      : match[1]
-	    tokens.push({
-	      tag: true,
-	      value: value.trim(),
-	      html: htmlRE.test(match[0]),
-	      oneTime: oneTime,
-	      partial: partial
-	    })
-	    lastIndex = index + match[0].length
-	  }
-	  if (lastIndex < text.length) {
-	    tokens.push({
-	      value: text.slice(lastIndex)
-	    })
-	  }
-	  cache.put(text, tokens)
-	  return tokens
-	}
-
-	/**
-	 * Format a list of tokens into an expression.
-	 * e.g. tokens parsed from 'a {{b}} c' can be serialized
-	 * into one single expression as '"a " + b + " c"'.
-	 *
-	 * @param {Array} tokens
-	 * @param {Vue} [vm]
-	 * @return {String}
-	 */
-
-	exports.tokensToExp = function (tokens, vm) {
-	  return tokens.length > 1
-	    ? tokens.map(function (token) {
-	        return formatToken(token, vm)
-	      }).join('+')
-	    : formatToken(tokens[0], vm, true)
-	}
-
-	/**
-	 * Format a single token.
-	 *
-	 * @param {Object} token
-	 * @param {Vue} [vm]
-	 * @param {Boolean} single
-	 * @return {String}
-	 */
-
-	function formatToken (token, vm, single) {
-	  return token.tag
-	    ? vm && token.oneTime
-	      ? '"' + vm.$eval(token.value) + '"'
-	      : single
-	        ? token.value
-	        : inlineFilters(token.value)
-	    : '"' + token.value + '"'
-	}
-
-	/**
-	 * For an attribute with multiple interpolation tags,
-	 * e.g. attr="some-{{thing | filter}}", in order to combine
-	 * the whole thing into a single watchable expression, we
-	 * have to inline those filters. This function does exactly
-	 * that. This is a bit hacky but it avoids heavy changes
-	 * to directive parser and watcher mechanism.
-	 *
-	 * @param {String} exp
-	 * @return {String}
-	 */
-
-	var filterRE = /[^|]\|[^|]/
-	function inlineFilters (exp) {
-	  if (!filterRE.test(exp)) {
-	    return '(' + exp + ')'
-	  } else {
-	    var dir = dirParser.parse(exp)[0]
-	    if (!dir.filters) {
-	      return '(' + exp + ')'
-	    } else {
-	      exp = dir.expression
-	      for (var i = 0, l = dir.filters.length; i < l; i++) {
-	        var filter = dir.filters[i]
-	        var args = filter.args
-	          ? ',"' + filter.args.join('","') + '"'
-	          : ''
-	        exp = 'this.$options.filters["' + filter.name + '"]' +
-	          '.apply(this,[' + exp + args + '])'
-	      }
-	      return exp
-	    }
-	  }
-	}
-
-/***/ },
-/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
@@ -11393,6 +10955,444 @@
 	    obj.$add(key, val)
 	  }
 	  return true
+	}
+
+/***/ },
+/* 73 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var _ = __webpack_require__(75)
+	var Cache = __webpack_require__(52)
+	var templateCache = new Cache(1000)
+	var idSelectorCache = new Cache(1000)
+
+	var map = {
+	  _default : [0, '', ''],
+	  legend   : [1, '<fieldset>', '</fieldset>'],
+	  tr       : [2, '<table><tbody>', '</tbody></table>'],
+	  col      : [
+	    2,
+	    '<table><tbody></tbody><colgroup>',
+	    '</colgroup></table>'
+	  ]
+	}
+
+	map.td =
+	map.th = [
+	  3,
+	  '<table><tbody><tr>',
+	  '</tr></tbody></table>'
+	]
+
+	map.option =
+	map.optgroup = [
+	  1,
+	  '<select multiple="multiple">',
+	  '</select>'
+	]
+
+	map.thead =
+	map.tbody =
+	map.colgroup =
+	map.caption =
+	map.tfoot = [1, '<table>', '</table>']
+
+	map.g =
+	map.defs =
+	map.symbol =
+	map.use =
+	map.image =
+	map.text =
+	map.circle =
+	map.ellipse =
+	map.line =
+	map.path =
+	map.polygon =
+	map.polyline =
+	map.rect = [
+	  1,
+	  '<svg ' +
+	    'xmlns="http://www.w3.org/2000/svg" ' +
+	    'xmlns:xlink="http://www.w3.org/1999/xlink" ' +
+	    'xmlns:ev="http://www.w3.org/2001/xml-events"' +
+	    'version="1.1">',
+	  '</svg>'
+	]
+
+	var tagRE = /<([\w:]+)/
+	var entityRE = /&\w+;/
+
+	/**
+	 * Convert a string template to a DocumentFragment.
+	 * Determines correct wrapping by tag types. Wrapping
+	 * strategy found in jQuery & component/domify.
+	 *
+	 * @param {String} templateString
+	 * @return {DocumentFragment}
+	 */
+
+	function stringToFragment (templateString) {
+	  // try a cache hit first
+	  var hit = templateCache.get(templateString)
+	  if (hit) {
+	    return hit
+	  }
+
+	  var frag = document.createDocumentFragment()
+	  var tagMatch = templateString.match(tagRE)
+	  var entityMatch = entityRE.test(templateString)
+
+	  if (!tagMatch && !entityMatch) {
+	    // text only, return a single text node.
+	    frag.appendChild(
+	      document.createTextNode(templateString)
+	    )
+	  } else {
+
+	    var tag    = tagMatch && tagMatch[1]
+	    var wrap   = map[tag] || map._default
+	    var depth  = wrap[0]
+	    var prefix = wrap[1]
+	    var suffix = wrap[2]
+	    var node   = document.createElement('div')
+
+	    node.innerHTML = prefix + templateString.trim() + suffix
+	    while (depth--) {
+	      node = node.lastChild
+	    }
+
+	    var child
+	    /* jshint boss:true */
+	    while (child = node.firstChild) {
+	      frag.appendChild(child)
+	    }
+	  }
+
+	  templateCache.put(templateString, frag)
+	  return frag
+	}
+
+	/**
+	 * Convert a template node to a DocumentFragment.
+	 *
+	 * @param {Node} node
+	 * @return {DocumentFragment}
+	 */
+
+	function nodeToFragment (node) {
+	  var tag = node.tagName
+	  // if its a template tag and the browser supports it,
+	  // its content is already a document fragment.
+	  if (
+	    tag === 'TEMPLATE' &&
+	    node.content instanceof DocumentFragment
+	  ) {
+	    return node.content
+	  }
+	  return tag === 'SCRIPT'
+	    ? stringToFragment(node.textContent)
+	    : stringToFragment(node.innerHTML)
+	}
+
+	// Test for the presence of the Safari template cloning bug
+	// https://bugs.webkit.org/show_bug.cgi?id=137755
+	var hasBrokenTemplate = _.inBrowser
+	  ? (function () {
+	      var a = document.createElement('div')
+	      a.innerHTML = '<template>1</template>'
+	      return !a.cloneNode(true).firstChild.innerHTML
+	    })()
+	  : false
+
+	// Test for IE10/11 textarea placeholder clone bug
+	var hasTextareaCloneBug = _.inBrowser
+	  ? (function () {
+	      var t = document.createElement('textarea')
+	      t.placeholder = 't'
+	      return t.cloneNode(true).value === 't'
+	    })()
+	  : false
+
+	/**
+	 * 1. Deal with Safari cloning nested <template> bug by
+	 *    manually cloning all template instances.
+	 * 2. Deal with IE10/11 textarea placeholder bug by setting
+	 *    the correct value after cloning.
+	 *
+	 * @param {Element|DocumentFragment} node
+	 * @return {Element|DocumentFragment}
+	 */
+
+	exports.clone = function (node) {
+	  var res = node.cloneNode(true)
+	  var i, original, cloned
+	  /* istanbul ignore if */
+	  if (hasBrokenTemplate) {
+	    original = node.querySelectorAll('template')
+	    if (original.length) {
+	      cloned = res.querySelectorAll('template')
+	      i = cloned.length
+	      while (i--) {
+	        cloned[i].parentNode.replaceChild(
+	          original[i].cloneNode(true),
+	          cloned[i]
+	        )
+	      }
+	    }
+	  }
+	  /* istanbul ignore if */
+	  if (hasTextareaCloneBug) {
+	    if (node.tagName === 'TEXTAREA') {
+	      res.value = node.value
+	    } else {
+	      original = node.querySelectorAll('textarea')
+	      if (original.length) {
+	        cloned = res.querySelectorAll('textarea')
+	        i = cloned.length
+	        while (i--) {
+	          cloned[i].value = original[i].value
+	        }
+	      }
+	    }
+	  }
+	  return res
+	}
+
+	/**
+	 * Process the template option and normalizes it into a
+	 * a DocumentFragment that can be used as a partial or a
+	 * instance template.
+	 *
+	 * @param {*} template
+	 *    Possible values include:
+	 *    - DocumentFragment object
+	 *    - Node object of type Template
+	 *    - id selector: '#some-template-id'
+	 *    - template string: '<div><span>{{msg}}</span></div>'
+	 * @param {Boolean} clone
+	 * @param {Boolean} noSelector
+	 * @return {DocumentFragment|undefined}
+	 */
+
+	exports.parse = function (template, clone, noSelector) {
+	  var node, frag
+
+	  // if the template is already a document fragment,
+	  // do nothing
+	  if (template instanceof DocumentFragment) {
+	    return clone
+	      ? template.cloneNode(true)
+	      : template
+	  }
+
+	  if (typeof template === 'string') {
+	    // id selector
+	    if (!noSelector && template.charAt(0) === '#') {
+	      // id selector can be cached too
+	      frag = idSelectorCache.get(template)
+	      if (!frag) {
+	        node = document.getElementById(template.slice(1))
+	        if (node) {
+	          frag = nodeToFragment(node)
+	          // save selector to cache
+	          idSelectorCache.put(template, frag)
+	        }
+	      }
+	    } else {
+	      // normal string template
+	      frag = stringToFragment(template)
+	    }
+	  } else if (template.nodeType) {
+	    // a direct node
+	    frag = nodeToFragment(template)
+	  }
+
+	  return frag && clone
+	    ? exports.clone(frag)
+	    : frag
+	}
+
+/***/ },
+/* 74 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Cache = __webpack_require__(52)
+	var config = __webpack_require__(57)
+	var dirParser = __webpack_require__(59)
+	var regexEscapeRE = /[-.*+?^${}()|[\]\/\\]/g
+	var cache, tagRE, htmlRE, firstChar, lastChar
+
+	/**
+	 * Escape a string so it can be used in a RegExp
+	 * constructor.
+	 *
+	 * @param {String} str
+	 */
+
+	function escapeRegex (str) {
+	  return str.replace(regexEscapeRE, '\\$&')
+	}
+
+	/**
+	 * Compile the interpolation tag regex.
+	 *
+	 * @return {RegExp}
+	 */
+
+	function compileRegex () {
+	  config._delimitersChanged = false
+	  var open = config.delimiters[0]
+	  var close = config.delimiters[1]
+	  firstChar = open.charAt(0)
+	  lastChar = close.charAt(close.length - 1)
+	  var firstCharRE = escapeRegex(firstChar)
+	  var lastCharRE = escapeRegex(lastChar)
+	  var openRE = escapeRegex(open)
+	  var closeRE = escapeRegex(close)
+	  tagRE = new RegExp(
+	    firstCharRE + '?' + openRE +
+	    '(.+?)' +
+	    closeRE + lastCharRE + '?',
+	    'g'
+	  )
+	  htmlRE = new RegExp(
+	    '^' + firstCharRE + openRE +
+	    '.*' +
+	    closeRE + lastCharRE + '$'
+	  )
+	  // reset cache
+	  cache = new Cache(1000)
+	}
+
+	/**
+	 * Parse a template text string into an array of tokens.
+	 *
+	 * @param {String} text
+	 * @return {Array<Object> | null}
+	 *               - {String} type
+	 *               - {String} value
+	 *               - {Boolean} [html]
+	 *               - {Boolean} [oneTime]
+	 */
+
+	exports.parse = function (text) {
+	  if (config._delimitersChanged) {
+	    compileRegex()
+	  }
+	  var hit = cache.get(text)
+	  if (hit) {
+	    return hit
+	  }
+	  if (!tagRE.test(text)) {
+	    return null
+	  }
+	  var tokens = []
+	  var lastIndex = tagRE.lastIndex = 0
+	  var match, index, value, first, oneTime, partial
+	  /* jshint boss:true */
+	  while (match = tagRE.exec(text)) {
+	    index = match.index
+	    // push text token
+	    if (index > lastIndex) {
+	      tokens.push({
+	        value: text.slice(lastIndex, index)
+	      })
+	    }
+	    // tag token
+	    first = match[1].charCodeAt(0)
+	    oneTime = first === 0x2A // *
+	    partial = first === 0x3E // >
+	    value = (oneTime || partial)
+	      ? match[1].slice(1)
+	      : match[1]
+	    tokens.push({
+	      tag: true,
+	      value: value.trim(),
+	      html: htmlRE.test(match[0]),
+	      oneTime: oneTime,
+	      partial: partial
+	    })
+	    lastIndex = index + match[0].length
+	  }
+	  if (lastIndex < text.length) {
+	    tokens.push({
+	      value: text.slice(lastIndex)
+	    })
+	  }
+	  cache.put(text, tokens)
+	  return tokens
+	}
+
+	/**
+	 * Format a list of tokens into an expression.
+	 * e.g. tokens parsed from 'a {{b}} c' can be serialized
+	 * into one single expression as '"a " + b + " c"'.
+	 *
+	 * @param {Array} tokens
+	 * @param {Vue} [vm]
+	 * @return {String}
+	 */
+
+	exports.tokensToExp = function (tokens, vm) {
+	  return tokens.length > 1
+	    ? tokens.map(function (token) {
+	        return formatToken(token, vm)
+	      }).join('+')
+	    : formatToken(tokens[0], vm, true)
+	}
+
+	/**
+	 * Format a single token.
+	 *
+	 * @param {Object} token
+	 * @param {Vue} [vm]
+	 * @param {Boolean} single
+	 * @return {String}
+	 */
+
+	function formatToken (token, vm, single) {
+	  return token.tag
+	    ? vm && token.oneTime
+	      ? '"' + vm.$eval(token.value) + '"'
+	      : single
+	        ? token.value
+	        : inlineFilters(token.value)
+	    : '"' + token.value + '"'
+	}
+
+	/**
+	 * For an attribute with multiple interpolation tags,
+	 * e.g. attr="some-{{thing | filter}}", in order to combine
+	 * the whole thing into a single watchable expression, we
+	 * have to inline those filters. This function does exactly
+	 * that. This is a bit hacky but it avoids heavy changes
+	 * to directive parser and watcher mechanism.
+	 *
+	 * @param {String} exp
+	 * @return {String}
+	 */
+
+	var filterRE = /[^|]\|[^|]/
+	function inlineFilters (exp) {
+	  if (!filterRE.test(exp)) {
+	    return '(' + exp + ')'
+	  } else {
+	    var dir = dirParser.parse(exp)[0]
+	    if (!dir.filters) {
+	      return '(' + exp + ')'
+	    } else {
+	      exp = dir.expression
+	      for (var i = 0, l = dir.filters.length; i < l; i++) {
+	        var filter = dir.filters[i]
+	        var args = filter.args
+	          ? ',"' + filter.args.join('","') + '"'
+	          : ''
+	        exp = 'this.$options.filters["' + filter.name + '"]' +
+	          '.apply(this,[' + exp + args + '])'
+	      }
+	      return exp
+	    }
+	  }
 	}
 
 /***/ },
@@ -11966,9 +11966,9 @@
 	}
 
 	exports.parsers = {
-	  path: __webpack_require__(74),
-	  text: __webpack_require__(73),
-	  template: __webpack_require__(72),
+	  path: __webpack_require__(72),
+	  text: __webpack_require__(74),
+	  template: __webpack_require__(73),
 	  directive: __webpack_require__(59),
 	  expression: __webpack_require__(71)
 	}
@@ -12463,7 +12463,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Directive = __webpack_require__(54)
+	var Directive = __webpack_require__(55)
 	var compile = __webpack_require__(58)
 	var transclude = __webpack_require__(61)
 
@@ -12657,8 +12657,8 @@
 
 	var _ = __webpack_require__(75)
 	var Watcher = __webpack_require__(56)
-	var Path = __webpack_require__(74)
-	var textParser = __webpack_require__(73)
+	var Path = __webpack_require__(72)
+	var textParser = __webpack_require__(74)
 	var dirParser = __webpack_require__(59)
 	var expParser = __webpack_require__(71)
 	var filterRE = /[^|]\|[^|]/
@@ -13984,7 +13984,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// manipulation directives
-	exports.text       = __webpack_require__(66)
+	exports.text       = __webpack_require__(67)
 	exports.html       = __webpack_require__(64)
 	exports.attr       = __webpack_require__(62)
 	exports.show       = __webpack_require__(65)
@@ -13992,7 +13992,7 @@
 	exports.el         = __webpack_require__(99)
 	exports.ref        = __webpack_require__(100)
 	exports.cloak      = __webpack_require__(101)
-	exports.style      = __webpack_require__(67)
+	exports.style      = __webpack_require__(66)
 	exports.partial    = __webpack_require__(102)
 	exports.transition = __webpack_require__(68)
 
@@ -14256,7 +14256,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Path = __webpack_require__(74)
+	var Path = __webpack_require__(72)
 
 	/**
 	 * Filter filter for v-repeat
@@ -14577,7 +14577,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var templateParser = __webpack_require__(72)
+	var templateParser = __webpack_require__(73)
 	var vIf = __webpack_require__(106)
 
 	module.exports = {
@@ -14690,7 +14690,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var templateParser = __webpack_require__(72)
+	var templateParser = __webpack_require__(73)
 
 	module.exports = {
 
@@ -14920,9 +14920,9 @@
 	var _ = __webpack_require__(75)
 	var isObject = _.isObject
 	var isPlainObject = _.isPlainObject
-	var textParser = __webpack_require__(73)
+	var textParser = __webpack_require__(74)
 	var expParser = __webpack_require__(71)
-	var templateParser = __webpack_require__(72)
+	var templateParser = __webpack_require__(73)
 	var compile = __webpack_require__(58)
 	var transclude = __webpack_require__(61)
 	var mergeOptions = __webpack_require__(60)
@@ -15428,7 +15428,7 @@
 
 	var _ = __webpack_require__(75)
 	var compile = __webpack_require__(58)
-	var templateParser = __webpack_require__(72)
+	var templateParser = __webpack_require__(73)
 	var transition = __webpack_require__(76)
 
 	module.exports = {
