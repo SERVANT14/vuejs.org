@@ -266,8 +266,8 @@
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(54)
-	var Directive = __webpack_require__(55)
+	var Vue = __webpack_require__(53)
+	var Directive = __webpack_require__(54)
 	var nextTick = Vue.nextTick
 
 	describe('Directive', function () {
@@ -465,9 +465,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// patch inDoc
-	__webpack_require__(53)
+	__webpack_require__(55)
 	// test cases for edge cases & bug fixes
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	describe('Misc', function () {
 
@@ -521,7 +521,7 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 	var nextTick = Vue.nextTick
 	var Watcher = __webpack_require__(56)
 	var _ = Vue.util
@@ -926,7 +926,7 @@
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	describe('Child API', function () {
 
@@ -1009,7 +1009,7 @@
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 	var _ = __webpack_require__(75)
 	var nextTick = _.nextTick
 
@@ -1192,7 +1192,7 @@
 	 * those are tested in transition_spec.js.
 	 */
 
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 	var _ = __webpack_require__(75)
 
 	if (_.inBrowser) {
@@ -1367,7 +1367,7 @@
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	describe('Events API', function () {
 
@@ -1506,7 +1506,7 @@
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 	var _ = __webpack_require__(75)
 	var config = __webpack_require__(57)
 
@@ -1609,7 +1609,7 @@
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 	var _ = __webpack_require__(75)
 	var compile = __webpack_require__(58)
 
@@ -1920,7 +1920,7 @@
 /* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 	var _ = __webpack_require__(75)
 	var dirParser = __webpack_require__(59)
 	var merge = __webpack_require__(60)
@@ -2360,7 +2360,7 @@
 
 	var _ = __webpack_require__(75)
 	var compile = __webpack_require__(58)
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	if (_.inBrowser) {
 	  describe('v-cloak', function () {
@@ -2389,9 +2389,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// patch inDoc
-	__webpack_require__(53)
+	__webpack_require__(55)
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	if (_.inBrowser) {
 	  describe('v-component', function () {
@@ -2763,7 +2763,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	if (_.inBrowser) {
 	  describe('v-el', function () {
@@ -2810,7 +2810,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	if (_.inBrowser) {
 	  describe('v-events', function () {
@@ -2937,7 +2937,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	if (_.inBrowser) {
 	  describe('v-if', function () {
@@ -3126,7 +3126,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	/**
 	 * Mock event helper
@@ -3641,7 +3641,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	function trigger (target, event, process) {
 	  var e = document.createEvent('HTMLEvents')
@@ -3780,7 +3780,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	if (_.inBrowser) {
 	  describe('v-partial', function () {
@@ -3900,7 +3900,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	if (_.inBrowser) {
 	  describe('v-pre', function () {
@@ -3924,7 +3924,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	if (_.inBrowser) {
 	  describe('v-ref', function () {
@@ -4051,9 +4051,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// patch inDoc
-	__webpack_require__(53)
+	__webpack_require__(55)
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	if (_.inBrowser) {
 	  describe('v-repeat', function () {
@@ -4782,7 +4782,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 	var transition = __webpack_require__(76)
 	var def = __webpack_require__(65)
 
@@ -4817,7 +4817,7 @@
 
 	var _ = __webpack_require__(75)
 	var def = __webpack_require__(66)
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	function checkPrefixedProp (prop) {
 	  var el = document.createElement('div')
@@ -4992,7 +4992,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	if (_.inBrowser) {
 	  describe('v-with', function () {
@@ -5133,7 +5133,7 @@
 /* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 	var filters = __webpack_require__(77)
 
 	describe('Filters', function () {
@@ -5329,7 +5329,7 @@
 /* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 	var _ = __webpack_require__(75)
 
 	describe('Instance Events', function () {
@@ -5668,7 +5668,7 @@
 /* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	describe('Instance Scope', function () {
 
@@ -6751,7 +6751,7 @@
 
 	var textParser = __webpack_require__(74)
 	var config = __webpack_require__(57)
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 
 	var testCases = [
 	  {
@@ -6879,7 +6879,7 @@
 /* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 	var _ = __webpack_require__(75)
 	var transition = __webpack_require__(76)
 
@@ -7682,7 +7682,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Vue = __webpack_require__(54)
+	var Vue = __webpack_require__(53)
 	var merge = __webpack_require__(60)
 
 	describe('Util - Option merging', function () {
@@ -8183,34 +8183,6 @@
 /* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// PhantomJS always return false when using Element.contains
-	// on a comment node - so we have to patch the inDoc util
-	// function when running in PhantomJS.
-
-	var _ = __webpack_require__(75)
-	var inDoc = _.inDoc
-
-	_.inDoc = function (el) {
-	  if (el && el.nodeType === 8) {
-	    return manualInDoc(el)
-	  }
-	  return inDoc(el)  
-	}
-
-	function manualInDoc (el) {
-	  while (el) {
-	    if (el === document.documentElement) {
-	      return true
-	    }
-	    el = el.parentNode
-	  }
-	  return false
-	}
-
-/***/ },
-/* 54 */
-/***/ function(module, exports, __webpack_require__) {
-
 	var _ = __webpack_require__(75)
 	var extend = _.extend
 
@@ -8297,7 +8269,7 @@
 	module.exports = _.Vue = Vue
 
 /***/ },
-/* 55 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
@@ -8522,6 +8494,34 @@
 	}
 
 	module.exports = Directive
+
+/***/ },
+/* 55 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// PhantomJS always return false when using Element.contains
+	// on a comment node - so we have to patch the inDoc util
+	// function when running in PhantomJS.
+
+	var _ = __webpack_require__(75)
+	var inDoc = _.inDoc
+
+	_.inDoc = function (el) {
+	  if (el && el.nodeType === 8) {
+	    return manualInDoc(el)
+	  }
+	  return inDoc(el)  
+	}
+
+	function manualInDoc (el) {
+	  while (el) {
+	    if (el === document.documentElement) {
+	      return true
+	    }
+	    el = el.parentNode
+	  }
+	  return false
+	}
 
 /***/ },
 /* 56 */
@@ -12463,7 +12463,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Directive = __webpack_require__(55)
+	var Directive = __webpack_require__(54)
 	var compile = __webpack_require__(58)
 	var transclude = __webpack_require__(61)
 
