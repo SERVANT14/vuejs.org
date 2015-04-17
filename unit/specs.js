@@ -465,7 +465,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// patch inDoc
-	__webpack_require__(55)
+	__webpack_require__(56)
 	// test cases for edge cases & bug fixes
 	var Vue = __webpack_require__(53)
 
@@ -523,7 +523,7 @@
 
 	var Vue = __webpack_require__(53)
 	var nextTick = Vue.nextTick
-	var Watcher = __webpack_require__(56)
+	var Watcher = __webpack_require__(55)
 	var _ = Vue.util
 	var config = Vue.config
 
@@ -2389,7 +2389,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// patch inDoc
-	__webpack_require__(55)
+	__webpack_require__(56)
 	var _ = __webpack_require__(75)
 	var Vue = __webpack_require__(53)
 
@@ -4051,7 +4051,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// patch inDoc
-	__webpack_require__(55)
+	__webpack_require__(56)
 	var _ = __webpack_require__(75)
 	var Vue = __webpack_require__(53)
 
@@ -8274,7 +8274,7 @@
 
 	var _ = __webpack_require__(75)
 	var config = __webpack_require__(57)
-	var Watcher = __webpack_require__(56)
+	var Watcher = __webpack_require__(55)
 	var textParser = __webpack_require__(74)
 	var expParser = __webpack_require__(71)
 
@@ -8497,34 +8497,6 @@
 
 /***/ },
 /* 55 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// PhantomJS always return false when using Element.contains
-	// on a comment node - so we have to patch the inDoc util
-	// function when running in PhantomJS.
-
-	var _ = __webpack_require__(75)
-	var inDoc = _.inDoc
-
-	_.inDoc = function (el) {
-	  if (el && el.nodeType === 8) {
-	    return manualInDoc(el)
-	  }
-	  return inDoc(el)  
-	}
-
-	function manualInDoc (el) {
-	  while (el) {
-	    if (el === document.documentElement) {
-	      return true
-	    }
-	    el = el.parentNode
-	  }
-	  return false
-	}
-
-/***/ },
-/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
@@ -8784,6 +8756,34 @@
 	}
 
 	module.exports = Watcher
+
+/***/ },
+/* 56 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// PhantomJS always return false when using Element.contains
+	// on a comment node - so we have to patch the inDoc util
+	// function when running in PhantomJS.
+
+	var _ = __webpack_require__(75)
+	var inDoc = _.inDoc
+
+	_.inDoc = function (el) {
+	  if (el && el.nodeType === 8) {
+	    return manualInDoc(el)
+	  }
+	  return inDoc(el)  
+	}
+
+	function manualInDoc (el) {
+	  while (el) {
+	    if (el === document.documentElement) {
+	      return true
+	    }
+	    el = el.parentNode
+	  }
+	  return false
+	}
 
 /***/ },
 /* 57 */
@@ -12656,7 +12656,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Watcher = __webpack_require__(56)
+	var Watcher = __webpack_require__(55)
 	var Path = __webpack_require__(72)
 	var textParser = __webpack_require__(74)
 	var dirParser = __webpack_require__(59)
@@ -15515,7 +15515,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Watcher = __webpack_require__(56)
+	var Watcher = __webpack_require__(55)
 
 	module.exports = {
 
@@ -15845,7 +15845,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Watcher = __webpack_require__(56)
+	var Watcher = __webpack_require__(55)
 
 	module.exports = {
 

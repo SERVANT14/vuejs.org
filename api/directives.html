@@ -156,7 +156,7 @@
 <li>This directive requires the value to be an Array, Object or Number.</li>
 <li>This directive can trigger transitions.</li>
 <li>This directive accepts an optional argument.</li>
-<li>Directive params: <code>trackby</code></li>
+<li>Directive params: <a href="/guide/list.html#Using_track-by"><code>track-by</code></a></li>
 </ul>
 <p>Create a child ViewModel for every item in the binding Array or Object. If the value is a whole Number then that many child ViewModels are created. These child ViewModels will be automatically created / destroyed when mutating methods, e.g. <code>push()</code>, are called on the Array or Object, or the number is increased or decreased.</p>
 <p>When no argument is provided, the child ViewModel will directly use the assigned element in the Array as its <code>$data</code>. If the value is not an object, a wrapper data object will be created and the value will be set on that object using the alias key <code>$value</code>.</p>
