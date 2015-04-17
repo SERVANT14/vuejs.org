@@ -1,41 +1,41 @@
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-/******/
+
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-/******/
+
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-/******/
+
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			exports: {},
 /******/ 			id: moduleId,
 /******/ 			loaded: false
 /******/ 		};
-/******/
+
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
+
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-/******/
+
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
-/******/
+
+
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-/******/
+
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-/******/
+
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-/******/
+
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
 /******/ })
@@ -101,7 +101,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var batcher = __webpack_require__(52)
+	var batcher = __webpack_require__(51)
 	var nextTick = __webpack_require__(75).nextTick
 
 	describe('Batcher', function () {
@@ -207,7 +207,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Cache = __webpack_require__(51)
+	var Cache = __webpack_require__(52)
 
 	/**
 	 * Debug function to assert cache state
@@ -1922,8 +1922,8 @@
 
 	var Vue = __webpack_require__(53)
 	var _ = __webpack_require__(75)
-	var dirParser = __webpack_require__(60)
-	var merge = __webpack_require__(61)
+	var dirParser = __webpack_require__(59)
+	var merge = __webpack_require__(60)
 	var compile = __webpack_require__(58)
 
 	if (_.inBrowser) {
@@ -2142,7 +2142,7 @@
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var transclude = __webpack_require__(59)
+	var transclude = __webpack_require__(61)
 	var _ = __webpack_require__(75)
 
 	if (_.inBrowser) {
@@ -6075,7 +6075,7 @@
 /* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var parse = __webpack_require__(60).parse
+	var parse = __webpack_require__(59).parse
 
 	describe('Directive Parser', function () {
 
@@ -7683,7 +7683,7 @@
 
 	var _ = __webpack_require__(75)
 	var Vue = __webpack_require__(53)
-	var merge = __webpack_require__(61)
+	var merge = __webpack_require__(60)
 
 	describe('Util - Option merging', function () {
 	  
@@ -7967,6 +7967,105 @@
 /* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var _ = __webpack_require__(75)
+	var MAX_UPDATE_COUNT = 10
+
+	// we have two separate queues: one for directive updates
+	// and one for user watcher registered via $watch().
+	// we want to guarantee directive updates to be called
+	// before user watchers so that when user watchers are
+	// triggered, the DOM would have already been in updated
+	// state.
+	var queue = []
+	var userQueue = []
+	var has = {}
+	var waiting = false
+	var flushing = false
+
+	/**
+	 * Reset the batcher's state.
+	 */
+
+	function reset () {
+	  queue = []
+	  userQueue = []
+	  has = {}
+	  waiting = false
+	  flushing = false
+	}
+
+	/**
+	 * Flush both queues and run the jobs.
+	 */
+
+	function flush () {
+	  flushing = true
+	  run(queue)
+	  run(userQueue)
+	  reset()
+	}
+
+	/**
+	 * Run the jobs in a single queue.
+	 *
+	 * @param {Array} queue
+	 */
+
+	function run (queue) {
+	  // do not cache length because more jobs might be pushed
+	  // as we run existing jobs
+	  for (var i = 0; i < queue.length; i++) {
+	    queue[i].run()
+	  }
+	}
+
+	/**
+	 * Push a job into the job queue.
+	 * Jobs with duplicate IDs will be skipped unless it's
+	 * pushed when the queue is being flushed.
+	 *
+	 * @param {Object} job
+	 *   properties:
+	 *   - {String|Number} id
+	 *   - {Function}      run
+	 */
+
+	exports.push = function (job) {
+	  var id = job.id
+	  if (!id || !has[id] || flushing) {
+	    if (!has[id]) {
+	      has[id] = 1
+	    } else {
+	      has[id]++
+	      // detect possible infinite update loops
+	      if (has[id] > MAX_UPDATE_COUNT) {
+	        _.warn(
+	          'You may have an infinite update loop for the ' +
+	          'watcher with expression: "' + job.expression + '".'
+	        )
+	        return
+	      }
+	    }
+	    // A user watcher callback could trigger another
+	    // directive update during the flushing; at that time
+	    // the directive queue would already have been run, so
+	    // we call that update immediately as it is pushed.
+	    if (flushing && !job.user) {
+	      job.run()
+	      return
+	    }
+	    ;(job.user ? userQueue : queue).push(job)
+	    if (!waiting) {
+	      waiting = true
+	      _.nextTick(flush)
+	    }
+	  }
+	}
+
+/***/ },
+/* 52 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/**
 	 * A doubly linked list-based Least Recently Used (LRU)
 	 * cache. Will keep most recently used items while
@@ -8079,105 +8178,6 @@
 	}
 
 	module.exports = Cache
-
-/***/ },
-/* 52 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var _ = __webpack_require__(75)
-	var MAX_UPDATE_COUNT = 10
-
-	// we have two separate queues: one for directive updates
-	// and one for user watcher registered via $watch().
-	// we want to guarantee directive updates to be called
-	// before user watchers so that when user watchers are
-	// triggered, the DOM would have already been in updated
-	// state.
-	var queue = []
-	var userQueue = []
-	var has = {}
-	var waiting = false
-	var flushing = false
-
-	/**
-	 * Reset the batcher's state.
-	 */
-
-	function reset () {
-	  queue = []
-	  userQueue = []
-	  has = {}
-	  waiting = false
-	  flushing = false
-	}
-
-	/**
-	 * Flush both queues and run the jobs.
-	 */
-
-	function flush () {
-	  flushing = true
-	  run(queue)
-	  run(userQueue)
-	  reset()
-	}
-
-	/**
-	 * Run the jobs in a single queue.
-	 *
-	 * @param {Array} queue
-	 */
-
-	function run (queue) {
-	  // do not cache length because more jobs might be pushed
-	  // as we run existing jobs
-	  for (var i = 0; i < queue.length; i++) {
-	    queue[i].run()
-	  }
-	}
-
-	/**
-	 * Push a job into the job queue.
-	 * Jobs with duplicate IDs will be skipped unless it's
-	 * pushed when the queue is being flushed.
-	 *
-	 * @param {Object} job
-	 *   properties:
-	 *   - {String|Number} id
-	 *   - {Function}      run
-	 */
-
-	exports.push = function (job) {
-	  var id = job.id
-	  if (!id || !has[id] || flushing) {
-	    if (!has[id]) {
-	      has[id] = 1
-	    } else {
-	      has[id]++
-	      // detect possible infinite update loops
-	      if (has[id] > MAX_UPDATE_COUNT) {
-	        _.warn(
-	          'You may have an infinite update loop for the ' +
-	          'watcher with expression: "' + job.expression + '".'
-	        )
-	        return
-	      }
-	    }
-	    // A user watcher callback could trigger another
-	    // directive update during the flushing; at that time
-	    // the directive queue would already have been run, so
-	    // we call that update immediately as it is pushed.
-	    if (flushing && !job.user) {
-	      job.run()
-	      return
-	    }
-	    ;(job.user ? userQueue : queue).push(job)
-	    if (!waiting) {
-	      waiting = true
-	      _.nextTick(flush)
-	    }
-	  }
-	}
 
 /***/ },
 /* 53 */
@@ -8531,7 +8531,7 @@
 	var config = __webpack_require__(57)
 	var Observer = __webpack_require__(78)
 	var expParser = __webpack_require__(71)
-	var batcher = __webpack_require__(52)
+	var batcher = __webpack_require__(51)
 	var uid = 0
 
 	/**
@@ -8883,7 +8883,7 @@
 	var _ = __webpack_require__(75)
 	var config = __webpack_require__(57)
 	var textParser = __webpack_require__(74)
-	var dirParser = __webpack_require__(60)
+	var dirParser = __webpack_require__(59)
 	var templateParser = __webpack_require__(73)
 
 	/**
@@ -9450,161 +9450,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var templateParser = __webpack_require__(73)
-
-	/**
-	 * Process an element or a DocumentFragment based on a
-	 * instance option object. This allows us to transclude
-	 * a template node/fragment before the instance is created,
-	 * so the processed fragment can then be cloned and reused
-	 * in v-repeat.
-	 *
-	 * @param {Element} el
-	 * @param {Object} options
-	 * @return {Element|DocumentFragment}
-	 */
-
-	module.exports = function transclude (el, options) {
-	  // for template tags, what we want is its content as
-	  // a documentFragment (for block instances)
-	  if (el.tagName === 'TEMPLATE') {
-	    el = templateParser.parse(el)
-	  }
-	  if (options && options.template) {
-	    el = transcludeTemplate(el, options)
-	  }
-	  if (el instanceof DocumentFragment) {
-	    _.prepend(document.createComment('v-start'), el)
-	    el.appendChild(document.createComment('v-end'))
-	  }
-	  return el
-	}
-
-	/**
-	 * Process the template option.
-	 * If the replace option is true this will swap the $el.
-	 *
-	 * @param {Element} el
-	 * @param {Object} options
-	 * @return {Element|DocumentFragment}
-	 */
-
-	function transcludeTemplate (el, options) {
-	  var template = options.template
-	  var frag = templateParser.parse(template, true)
-	  if (!frag) {
-	    _.warn('Invalid template option: ' + template)
-	  } else {
-	    var rawContent = options._content || _.extractContent(el)
-	    if (options.replace) {
-	      if (frag.childNodes.length > 1) {
-	        transcludeContent(frag, rawContent)
-	        // TODO: store directives on placeholder node
-	        // and compile it somehow
-	        // probably only check for v-with, v-ref & paramAttributes
-	        return frag
-	      } else {
-	        var replacer = frag.firstChild
-	        _.copyAttributes(el, replacer)
-	        transcludeContent(replacer, rawContent)
-	        return replacer
-	      }
-	    } else {
-	      el.appendChild(frag)
-	      transcludeContent(el, rawContent)
-	      return el
-	    }
-	  }
-	}
-
-	/**
-	 * Resolve <content> insertion points mimicking the behavior
-	 * of the Shadow DOM spec:
-	 *
-	 *   http://w3c.github.io/webcomponents/spec/shadow/#insertion-points
-	 *
-	 * @param {Element|DocumentFragment} el
-	 * @param {Element} raw
-	 */
-
-	function transcludeContent (el, raw) {
-	  var outlets = getOutlets(el)
-	  var i = outlets.length
-	  if (!i) return
-	  var outlet, select, selected, j, main
-	  // first pass, collect corresponding content
-	  // for each outlet.
-	  while (i--) {
-	    outlet = outlets[i]
-	    if (raw) {
-	      select = outlet.getAttribute('select')
-	      if (select) {  // select content
-	        selected = raw.querySelectorAll(select)
-	        outlet.content = _.toArray(
-	          selected.length
-	            ? selected
-	            : outlet.childNodes
-	        )
-	      } else { // default content
-	        main = outlet
-	      }
-	    } else { // fallback content
-	      outlet.content = _.toArray(outlet.childNodes)
-	    }
-	  }
-	  // second pass, actually insert the contents
-	  for (i = 0, j = outlets.length; i < j; i++) {
-	    outlet = outlets[i]
-	    if (outlet !== main) {
-	      insertContentAt(outlet, outlet.content)
-	    }
-	  }
-	  // finally insert the main content
-	  if (main) {
-	    insertContentAt(main, _.toArray(raw.childNodes))
-	  }
-	}
-
-	/**
-	 * Get <content> outlets from the element/list
-	 *
-	 * @param {Element|Array} el
-	 * @return {Array}
-	 */
-
-	var concat = [].concat
-	function getOutlets (el) {
-	  return _.isArray(el)
-	    ? concat.apply([], el.map(getOutlets))
-	    : el.querySelectorAll
-	      ? _.toArray(el.querySelectorAll('content'))
-	      : []
-	}
-
-	/**
-	 * Insert an array of nodes at outlet,
-	 * then remove the outlet.
-	 *
-	 * @param {Element} outlet
-	 * @param {Array} contents
-	 */
-
-	function insertContentAt (outlet, contents) {
-	  // not using util DOM methods here because
-	  // parentNode can be cached
-	  var parent = outlet.parentNode
-	  for (var i = 0, j = contents.length; i < j; i++) {
-	    parent.insertBefore(contents[i], outlet)
-	  }
-	  parent.removeChild(outlet)
-	}
-
-/***/ },
-/* 60 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var _ = __webpack_require__(75)
-	var Cache = __webpack_require__(51)
+	var Cache = __webpack_require__(52)
 	var cache = new Cache(1000)
 	var argRE = /^[^\{\?]+$|^'[^']*'$|^"[^"]*"$/
 	var filterTokenRE = /[^\s'"]+|'[^']+'|"[^"]+"/g
@@ -9764,7 +9610,7 @@
 	}
 
 /***/ },
-/* 61 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
@@ -10024,6 +9870,160 @@
 	    options[key] = strat(parent[key], child[key], vm, key)
 	  }
 	  return options
+	}
+
+/***/ },
+/* 61 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var _ = __webpack_require__(75)
+	var templateParser = __webpack_require__(73)
+
+	/**
+	 * Process an element or a DocumentFragment based on a
+	 * instance option object. This allows us to transclude
+	 * a template node/fragment before the instance is created,
+	 * so the processed fragment can then be cloned and reused
+	 * in v-repeat.
+	 *
+	 * @param {Element} el
+	 * @param {Object} options
+	 * @return {Element|DocumentFragment}
+	 */
+
+	module.exports = function transclude (el, options) {
+	  // for template tags, what we want is its content as
+	  // a documentFragment (for block instances)
+	  if (el.tagName === 'TEMPLATE') {
+	    el = templateParser.parse(el)
+	  }
+	  if (options && options.template) {
+	    el = transcludeTemplate(el, options)
+	  }
+	  if (el instanceof DocumentFragment) {
+	    _.prepend(document.createComment('v-start'), el)
+	    el.appendChild(document.createComment('v-end'))
+	  }
+	  return el
+	}
+
+	/**
+	 * Process the template option.
+	 * If the replace option is true this will swap the $el.
+	 *
+	 * @param {Element} el
+	 * @param {Object} options
+	 * @return {Element|DocumentFragment}
+	 */
+
+	function transcludeTemplate (el, options) {
+	  var template = options.template
+	  var frag = templateParser.parse(template, true)
+	  if (!frag) {
+	    _.warn('Invalid template option: ' + template)
+	  } else {
+	    var rawContent = options._content || _.extractContent(el)
+	    if (options.replace) {
+	      if (frag.childNodes.length > 1) {
+	        transcludeContent(frag, rawContent)
+	        // TODO: store directives on placeholder node
+	        // and compile it somehow
+	        // probably only check for v-with, v-ref & paramAttributes
+	        return frag
+	      } else {
+	        var replacer = frag.firstChild
+	        _.copyAttributes(el, replacer)
+	        transcludeContent(replacer, rawContent)
+	        return replacer
+	      }
+	    } else {
+	      el.appendChild(frag)
+	      transcludeContent(el, rawContent)
+	      return el
+	    }
+	  }
+	}
+
+	/**
+	 * Resolve <content> insertion points mimicking the behavior
+	 * of the Shadow DOM spec:
+	 *
+	 *   http://w3c.github.io/webcomponents/spec/shadow/#insertion-points
+	 *
+	 * @param {Element|DocumentFragment} el
+	 * @param {Element} raw
+	 */
+
+	function transcludeContent (el, raw) {
+	  var outlets = getOutlets(el)
+	  var i = outlets.length
+	  if (!i) return
+	  var outlet, select, selected, j, main
+	  // first pass, collect corresponding content
+	  // for each outlet.
+	  while (i--) {
+	    outlet = outlets[i]
+	    if (raw) {
+	      select = outlet.getAttribute('select')
+	      if (select) {  // select content
+	        selected = raw.querySelectorAll(select)
+	        outlet.content = _.toArray(
+	          selected.length
+	            ? selected
+	            : outlet.childNodes
+	        )
+	      } else { // default content
+	        main = outlet
+	      }
+	    } else { // fallback content
+	      outlet.content = _.toArray(outlet.childNodes)
+	    }
+	  }
+	  // second pass, actually insert the contents
+	  for (i = 0, j = outlets.length; i < j; i++) {
+	    outlet = outlets[i]
+	    if (outlet !== main) {
+	      insertContentAt(outlet, outlet.content)
+	    }
+	  }
+	  // finally insert the main content
+	  if (main) {
+	    insertContentAt(main, _.toArray(raw.childNodes))
+	  }
+	}
+
+	/**
+	 * Get <content> outlets from the element/list
+	 *
+	 * @param {Element|Array} el
+	 * @return {Array}
+	 */
+
+	var concat = [].concat
+	function getOutlets (el) {
+	  return _.isArray(el)
+	    ? concat.apply([], el.map(getOutlets))
+	    : el.querySelectorAll
+	      ? _.toArray(el.querySelectorAll('content'))
+	      : []
+	}
+
+	/**
+	 * Insert an array of nodes at outlet,
+	 * then remove the outlet.
+	 *
+	 * @param {Element} outlet
+	 * @param {Array} contents
+	 */
+
+	function insertContentAt (outlet, contents) {
+	  // not using util DOM methods here because
+	  // parentNode can be cached
+	  var parent = outlet.parentNode
+	  for (var i = 0, j = contents.length; i < j; i++) {
+	    parent.insertBefore(contents[i], outlet)
+	  }
+	  parent.removeChild(outlet)
 	}
 
 /***/ },
@@ -10290,7 +10290,7 @@
 /* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var mergeOptions = __webpack_require__(61)
+	var mergeOptions = __webpack_require__(60)
 
 	/**
 	 * The main init sequence. This is called for every
@@ -10429,7 +10429,7 @@
 
 	var _ = __webpack_require__(75)
 	var Path = __webpack_require__(72)
-	var Cache = __webpack_require__(51)
+	var Cache = __webpack_require__(52)
 	var expressionCache = new Cache(1000)
 
 	var keywords =
@@ -10660,7 +10660,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Cache = __webpack_require__(51)
+	var Cache = __webpack_require__(52)
 	var pathCache = new Cache(1000)
 	var identRE = /^[$_a-zA-Z]+[\w$]*$/
 
@@ -10962,7 +10962,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var Cache = __webpack_require__(51)
+	var Cache = __webpack_require__(52)
 	var templateCache = new Cache(1000)
 	var idSelectorCache = new Cache(1000)
 
@@ -11216,9 +11216,9 @@
 /* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Cache = __webpack_require__(51)
+	var Cache = __webpack_require__(52)
 	var config = __webpack_require__(57)
-	var dirParser = __webpack_require__(60)
+	var dirParser = __webpack_require__(59)
 	var regexEscapeRE = /[-.*+?^${}()|[\]\/\\]/g
 	var cache, tagRE, htmlRE, firstChar, lastChar
 
@@ -11950,7 +11950,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(75)
-	var mergeOptions = __webpack_require__(61)
+	var mergeOptions = __webpack_require__(60)
 
 	/**
 	 * Expose useful internals
@@ -11962,14 +11962,14 @@
 
 	exports.compiler = {
 	  compile: __webpack_require__(58),
-	  transclude: __webpack_require__(59)
+	  transclude: __webpack_require__(61)
 	}
 
 	exports.parsers = {
 	  path: __webpack_require__(72),
 	  text: __webpack_require__(74),
 	  template: __webpack_require__(73),
-	  directive: __webpack_require__(60),
+	  directive: __webpack_require__(59),
 	  expression: __webpack_require__(71)
 	}
 
@@ -12465,7 +12465,7 @@
 	var _ = __webpack_require__(75)
 	var Directive = __webpack_require__(54)
 	var compile = __webpack_require__(58)
-	var transclude = __webpack_require__(59)
+	var transclude = __webpack_require__(61)
 
 	/**
 	 * Transclude, compile and link element.
@@ -12659,7 +12659,7 @@
 	var Watcher = __webpack_require__(56)
 	var Path = __webpack_require__(72)
 	var textParser = __webpack_require__(74)
-	var dirParser = __webpack_require__(60)
+	var dirParser = __webpack_require__(59)
 	var expParser = __webpack_require__(71)
 	var filterRE = /[^|]\|[^|]/
 
@@ -14924,8 +14924,8 @@
 	var expParser = __webpack_require__(71)
 	var templateParser = __webpack_require__(73)
 	var compile = __webpack_require__(58)
-	var transclude = __webpack_require__(59)
-	var mergeOptions = __webpack_require__(61)
+	var transclude = __webpack_require__(61)
+	var mergeOptions = __webpack_require__(60)
 	var uid = 0
 
 	module.exports = {
@@ -16049,4 +16049,4 @@
 	}
 
 /***/ }
-/******/ ])
+/******/ ]);
