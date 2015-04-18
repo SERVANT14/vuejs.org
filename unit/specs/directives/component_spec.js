@@ -1,5 +1,3 @@
-// patch inDoc
-require('../../lib/indoc_patch')
 var _ = require('../../../../src/util')
 var Vue = require('../../../../src/vue')
 
@@ -48,6 +46,25 @@ if (_.inBrowser) {
         }
       })
       expect(el.innerHTML).toBe('<p>123</p><!--v-component-->')
+    })
+
+    it('inline-template', function () {
+      var vm = new Vue({
+        el: el,
+        template: '<div v-component="test" inline-template>{{a}}</div>',
+        data: {
+          a: 'parent'
+        },
+        components: {
+          test: {
+            data: function () {
+              return { a: 'child' }
+            },
+            template: 'child option template'
+          }
+        }
+      })
+      expect(el.innerHTML).toBe('<div>child</div><!--v-component-->')
     })
 
     it('block replace', function () {
