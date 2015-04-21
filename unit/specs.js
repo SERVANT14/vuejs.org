@@ -207,7 +207,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Cache = __webpack_require__(52)
+	var Cache = __webpack_require__(54)
 
 	/**
 	 * Debug function to assert cache state
@@ -266,8 +266,8 @@
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
-	var Directive = __webpack_require__(54)
+	var Vue = __webpack_require__(52)
+	var Directive = __webpack_require__(53)
 	var nextTick = Vue.nextTick
 
 	describe('Directive', function () {
@@ -465,7 +465,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// test cases for edge cases & bug fixes
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 
 	describe('Misc', function () {
 
@@ -519,7 +519,7 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 	var nextTick = Vue.nextTick
 	var Watcher = __webpack_require__(55)
 	var _ = Vue.util
@@ -924,7 +924,7 @@
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 
 	describe('Child API', function () {
 
@@ -1007,7 +1007,7 @@
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 	var _ = __webpack_require__(74)
 	var nextTick = _.nextTick
 
@@ -1190,7 +1190,7 @@
 	 * those are tested in transition_spec.js.
 	 */
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 	var _ = __webpack_require__(74)
 
 	if (_.inBrowser) {
@@ -1372,7 +1372,7 @@
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 
 	describe('Events API', function () {
 
@@ -1511,9 +1511,9 @@
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 	var _ = __webpack_require__(74)
-	var config = __webpack_require__(56)
+	var config = __webpack_require__(59)
 
 	describe('Global API', function () {
 
@@ -1614,9 +1614,9 @@
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 	var _ = __webpack_require__(74)
-	var compile = __webpack_require__(57)
+	var compile = __webpack_require__(58)
 
 	if (_.inBrowser) {
 	  describe('Lifecycle API', function () {
@@ -1925,11 +1925,11 @@
 /* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 	var _ = __webpack_require__(74)
-	var dirParser = __webpack_require__(58)
-	var merge = __webpack_require__(59)
-	var compile = __webpack_require__(57)
+	var dirParser = __webpack_require__(56)
+	var merge = __webpack_require__(57)
+	var compile = __webpack_require__(58)
 
 	if (_.inBrowser) {
 	  describe('Compile', function () {
@@ -2374,8 +2374,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var compile = __webpack_require__(57)
-	var Vue = __webpack_require__(53)
+	var compile = __webpack_require__(58)
+	var Vue = __webpack_require__(52)
 
 	if (_.inBrowser) {
 	  describe('v-cloak', function () {
@@ -2404,7 +2404,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 
 	if (_.inBrowser) {
 	  describe('v-component', function () {
@@ -2795,7 +2795,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 
 	if (_.inBrowser) {
 	  describe('v-el', function () {
@@ -2842,7 +2842,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 
 	if (_.inBrowser) {
 	  describe('v-events', function () {
@@ -2969,7 +2969,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 
 	if (_.inBrowser) {
 	  describe('v-if', function () {
@@ -3217,7 +3217,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 
 	// unset jQuery to bypass jQuery check for normal test cases
 	jQuery = null
@@ -3868,7 +3868,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 
 	function trigger (target, event, process) {
 	  var e = document.createEvent('HTMLEvents')
@@ -4007,7 +4007,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 
 	if (_.inBrowser) {
 	  describe('v-partial', function () {
@@ -4127,7 +4127,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 
 	if (_.inBrowser) {
 	  describe('v-pre', function () {
@@ -4151,7 +4151,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 
 	if (_.inBrowser) {
 	  describe('v-ref', function () {
@@ -4278,7 +4278,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 
 	if (_.inBrowser) {
 	  describe('v-repeat', function () {
@@ -5246,7 +5246,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 	var transition = __webpack_require__(75)
 	var def = __webpack_require__(64)
 
@@ -5281,7 +5281,7 @@
 
 	var _ = __webpack_require__(74)
 	var def = __webpack_require__(65)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 
 	function checkPrefixedProp (prop) {
 	  var el = document.createElement('div')
@@ -5456,7 +5456,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 
 	if (_.inBrowser) {
 	  describe('v-with', function () {
@@ -5616,7 +5616,7 @@
 /* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 	var filters = __webpack_require__(76)
 
 	describe('Filters', function () {
@@ -5814,7 +5814,7 @@
 /* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 	var _ = __webpack_require__(74)
 
 	describe('Instance Events', function () {
@@ -6153,7 +6153,7 @@
 /* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 
 	describe('Instance Scope', function () {
 
@@ -6353,7 +6353,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var Observer = __webpack_require__(77)
-	var config = __webpack_require__(56)
+	var config = __webpack_require__(59)
 	var Dep = __webpack_require__(69)
 	var _ = __webpack_require__(74)
 
@@ -6560,7 +6560,7 @@
 /* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var parse = __webpack_require__(58).parse
+	var parse = __webpack_require__(56).parse
 
 	describe('Directive Parser', function () {
 
@@ -7257,8 +7257,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var textParser = __webpack_require__(73)
-	var config = __webpack_require__(56)
-	var Vue = __webpack_require__(53)
+	var config = __webpack_require__(59)
+	var Vue = __webpack_require__(52)
 
 	var testCases = [
 	  {
@@ -7386,7 +7386,7 @@
 /* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(53)
+	var Vue = __webpack_require__(52)
 	var _ = __webpack_require__(74)
 	var transition = __webpack_require__(75)
 
@@ -7800,7 +7800,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var config = __webpack_require__(56)
+	var config = __webpack_require__(59)
 	var infoPrefix = '[Vue info]: '
 	var warnPrefix = '[Vue warn]: '
 	config.silent = true
@@ -8222,8 +8222,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Vue = __webpack_require__(53)
-	var merge = __webpack_require__(59)
+	var Vue = __webpack_require__(52)
+	var merge = __webpack_require__(57)
 
 	describe('Util - Option merging', function () {
 	  
@@ -8606,123 +8606,6 @@
 /* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/**
-	 * A doubly linked list-based Least Recently Used (LRU)
-	 * cache. Will keep most recently used items while
-	 * discarding least recently used items when its limit is
-	 * reached. This is a bare-bone version of
-	 * Rasmus Andersson's js-lru:
-	 *
-	 *   https://github.com/rsms/js-lru
-	 *
-	 * @param {Number} limit
-	 * @constructor
-	 */
-
-	function Cache (limit) {
-	  this.size = 0
-	  this.limit = limit
-	  this.head = this.tail = undefined
-	  this._keymap = {}
-	}
-
-	var p = Cache.prototype
-
-	/**
-	 * Put <value> into the cache associated with <key>.
-	 * Returns the entry which was removed to make room for
-	 * the new entry. Otherwise undefined is returned.
-	 * (i.e. if there was enough room already).
-	 *
-	 * @param {String} key
-	 * @param {*} value
-	 * @return {Entry|undefined}
-	 */
-
-	p.put = function (key, value) {
-	  var entry = {
-	    key:key,
-	    value:value
-	  }
-	  this._keymap[key] = entry
-	  if (this.tail) {
-	    this.tail.newer = entry
-	    entry.older = this.tail
-	  } else {
-	    this.head = entry
-	  }
-	  this.tail = entry
-	  if (this.size === this.limit) {
-	    return this.shift()
-	  } else {
-	    this.size++
-	  }
-	}
-
-	/**
-	 * Purge the least recently used (oldest) entry from the
-	 * cache. Returns the removed entry or undefined if the
-	 * cache was empty.
-	 */
-
-	p.shift = function () {
-	  var entry = this.head
-	  if (entry) {
-	    this.head = this.head.newer
-	    this.head.older = undefined
-	    entry.newer = entry.older = undefined
-	    this._keymap[entry.key] = undefined
-	  }
-	  return entry
-	}
-
-	/**
-	 * Get and register recent use of <key>. Returns the value
-	 * associated with <key> or undefined if not in cache.
-	 *
-	 * @param {String} key
-	 * @param {Boolean} returnEntry
-	 * @return {Entry|*}
-	 */
-
-	p.get = function (key, returnEntry) {
-	  var entry = this._keymap[key]
-	  if (entry === undefined) return
-	  if (entry === this.tail) {
-	    return returnEntry
-	      ? entry
-	      : entry.value
-	  }
-	  // HEAD--------------TAIL
-	  //   <.older   .newer>
-	  //  <--- add direction --
-	  //   A  B  C  <D>  E
-	  if (entry.newer) {
-	    if (entry === this.head) {
-	      this.head = entry.newer
-	    }
-	    entry.newer.older = entry.older // C <-- E.
-	  }
-	  if (entry.older) {
-	    entry.older.newer = entry.newer // C. --> E
-	  }
-	  entry.newer = undefined // D --x
-	  entry.older = this.tail // D. --> E
-	  if (this.tail) {
-	    this.tail.newer = entry // E. <-- D
-	  }
-	  this.tail = entry
-	  return returnEntry
-	    ? entry
-	    : entry.value
-	}
-
-	module.exports = Cache
-
-/***/ },
-/* 53 */
-/***/ function(module, exports, __webpack_require__) {
-
 	var _ = __webpack_require__(74)
 	var extend = _.extend
 
@@ -8809,11 +8692,11 @@
 	module.exports = _.Vue = Vue
 
 /***/ },
-/* 54 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var config = __webpack_require__(56)
+	var config = __webpack_require__(59)
 	var Watcher = __webpack_require__(55)
 	var textParser = __webpack_require__(73)
 	var expParser = __webpack_require__(70)
@@ -9036,11 +8919,128 @@
 	module.exports = Directive
 
 /***/ },
+/* 54 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * A doubly linked list-based Least Recently Used (LRU)
+	 * cache. Will keep most recently used items while
+	 * discarding least recently used items when its limit is
+	 * reached. This is a bare-bone version of
+	 * Rasmus Andersson's js-lru:
+	 *
+	 *   https://github.com/rsms/js-lru
+	 *
+	 * @param {Number} limit
+	 * @constructor
+	 */
+
+	function Cache (limit) {
+	  this.size = 0
+	  this.limit = limit
+	  this.head = this.tail = undefined
+	  this._keymap = {}
+	}
+
+	var p = Cache.prototype
+
+	/**
+	 * Put <value> into the cache associated with <key>.
+	 * Returns the entry which was removed to make room for
+	 * the new entry. Otherwise undefined is returned.
+	 * (i.e. if there was enough room already).
+	 *
+	 * @param {String} key
+	 * @param {*} value
+	 * @return {Entry|undefined}
+	 */
+
+	p.put = function (key, value) {
+	  var entry = {
+	    key:key,
+	    value:value
+	  }
+	  this._keymap[key] = entry
+	  if (this.tail) {
+	    this.tail.newer = entry
+	    entry.older = this.tail
+	  } else {
+	    this.head = entry
+	  }
+	  this.tail = entry
+	  if (this.size === this.limit) {
+	    return this.shift()
+	  } else {
+	    this.size++
+	  }
+	}
+
+	/**
+	 * Purge the least recently used (oldest) entry from the
+	 * cache. Returns the removed entry or undefined if the
+	 * cache was empty.
+	 */
+
+	p.shift = function () {
+	  var entry = this.head
+	  if (entry) {
+	    this.head = this.head.newer
+	    this.head.older = undefined
+	    entry.newer = entry.older = undefined
+	    this._keymap[entry.key] = undefined
+	  }
+	  return entry
+	}
+
+	/**
+	 * Get and register recent use of <key>. Returns the value
+	 * associated with <key> or undefined if not in cache.
+	 *
+	 * @param {String} key
+	 * @param {Boolean} returnEntry
+	 * @return {Entry|*}
+	 */
+
+	p.get = function (key, returnEntry) {
+	  var entry = this._keymap[key]
+	  if (entry === undefined) return
+	  if (entry === this.tail) {
+	    return returnEntry
+	      ? entry
+	      : entry.value
+	  }
+	  // HEAD--------------TAIL
+	  //   <.older   .newer>
+	  //  <--- add direction --
+	  //   A  B  C  <D>  E
+	  if (entry.newer) {
+	    if (entry === this.head) {
+	      this.head = entry.newer
+	    }
+	    entry.newer.older = entry.older // C <-- E.
+	  }
+	  if (entry.older) {
+	    entry.older.newer = entry.newer // C. --> E
+	  }
+	  entry.newer = undefined // D --x
+	  entry.older = this.tail // D. --> E
+	  if (this.tail) {
+	    this.tail.newer = entry // E. <-- D
+	  }
+	  this.tail = entry
+	  return returnEntry
+	    ? entry
+	    : entry.value
+	}
+
+	module.exports = Cache
+
+/***/ },
 /* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var config = __webpack_require__(56)
+	var config = __webpack_require__(59)
 	var Observer = __webpack_require__(77)
 	var expParser = __webpack_require__(70)
 	var batcher = __webpack_require__(51)
@@ -9301,101 +9301,437 @@
 /* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = {
+	var _ = __webpack_require__(74)
+	var Cache = __webpack_require__(54)
+	var cache = new Cache(1000)
+	var argRE = /^[^\{\?]+$|^'[^']*'$|^"[^"]*"$/
+	var filterTokenRE = /[^\s'"]+|'[^']+'|"[^"]+"/g
 
-	  /**
-	   * The prefix to look for when parsing directives.
-	   *
-	   * @type {String}
-	   */
+	/**
+	 * Parser state
+	 */
 
-	  prefix: 'v-',
+	var str
+	var c, i, l
+	var inSingle
+	var inDouble
+	var curly
+	var square
+	var paren
+	var begin
+	var argIndex
+	var dirs
+	var dir
+	var lastFilterIndex
+	var arg
 
-	  /**
-	   * Whether to print debug messages.
-	   * Also enables stack trace for warnings.
-	   *
-	   * @type {Boolean}
-	   */
+	/**
+	 * Push a directive object into the result Array
+	 */
 
-	  debug: false,
-
-	  /**
-	   * Whether to suppress warnings.
-	   *
-	   * @type {Boolean}
-	   */
-
-	  silent: false,
-
-	  /**
-	   * Whether allow observer to alter data objects'
-	   * __proto__.
-	   *
-	   * @type {Boolean}
-	   */
-
-	  proto: true,
-
-	  /**
-	   * Whether to parse mustache tags in templates.
-	   *
-	   * @type {Boolean}
-	   */
-
-	  interpolate: true,
-
-	  /**
-	   * Whether to use async rendering.
-	   */
-
-	  async: true,
-
-	  /**
-	   * Whether to warn against errors caught when evaluating
-	   * expressions.
-	   */
-
-	  warnExpressionErrors: true,
-
-	  /**
-	   * Internal flag to indicate the delimiters have been
-	   * changed.
-	   *
-	   * @type {Boolean}
-	   */
-
-	  _delimitersChanged: true
-
+	function pushDir () {
+	  dir.raw = str.slice(begin, i).trim()
+	  if (dir.expression === undefined) {
+	    dir.expression = str.slice(argIndex, i).trim()
+	  } else if (lastFilterIndex !== begin) {
+	    pushFilter()
+	  }
+	  if (i === 0 || dir.expression) {
+	    dirs.push(dir)
+	  }
 	}
 
 	/**
-	 * Interpolation delimiters.
-	 * We need to mark the changed flag so that the text parser
-	 * knows it needs to recompile the regex.
-	 *
-	 * @type {Array<String>}
+	 * Push a filter to the current directive object
 	 */
 
-	var delimiters = ['{{', '}}']
-	Object.defineProperty(module.exports, 'delimiters', {
-	  get: function () {
-	    return delimiters
-	  },
-	  set: function (val) {
-	    delimiters = val
-	    this._delimitersChanged = true
+	function pushFilter () {
+	  var exp = str.slice(lastFilterIndex, i).trim()
+	  var filter
+	  if (exp) {
+	    filter = {}
+	    var tokens = exp.match(filterTokenRE)
+	    filter.name = tokens[0]
+	    filter.args = tokens.length > 1 ? tokens.slice(1) : null
 	  }
-	})
+	  if (filter) {
+	    (dir.filters = dir.filters || []).push(filter)
+	  }
+	  lastFilterIndex = i + 1
+	}
+
+	/**
+	 * Parse a directive string into an Array of AST-like
+	 * objects representing directives.
+	 *
+	 * Example:
+	 *
+	 * "click: a = a + 1 | uppercase" will yield:
+	 * {
+	 *   arg: 'click',
+	 *   expression: 'a = a + 1',
+	 *   filters: [
+	 *     { name: 'uppercase', args: null }
+	 *   ]
+	 * }
+	 *
+	 * @param {String} str
+	 * @return {Array<Object>}
+	 */
+
+	exports.parse = function (s) {
+
+	  var hit = cache.get(s)
+	  if (hit) {
+	    return hit
+	  }
+
+	  // reset parser state
+	  str = s
+	  inSingle = inDouble = false
+	  curly = square = paren = begin = argIndex = 0
+	  lastFilterIndex = 0
+	  dirs = []
+	  dir = {}
+	  arg = null
+
+	  for (i = 0, l = str.length; i < l; i++) {
+	    c = str.charCodeAt(i)
+	    if (inSingle) {
+	      // check single quote
+	      if (c === 0x27) inSingle = !inSingle
+	    } else if (inDouble) {
+	      // check double quote
+	      if (c === 0x22) inDouble = !inDouble
+	    } else if (
+	      c === 0x2C && // comma
+	      !paren && !curly && !square
+	    ) {
+	      // reached the end of a directive
+	      pushDir()
+	      // reset & skip the comma
+	      dir = {}
+	      begin = argIndex = lastFilterIndex = i + 1
+	    } else if (
+	      c === 0x3A && // colon
+	      !dir.expression &&
+	      !dir.arg
+	    ) {
+	      // argument
+	      arg = str.slice(begin, i).trim()
+	      // test for valid argument here
+	      // since we may have caught stuff like first half of
+	      // an object literal or a ternary expression.
+	      if (argRE.test(arg)) {
+	        argIndex = i + 1
+	        dir.arg = _.stripQuotes(arg) || arg
+	      }
+	    } else if (
+	      c === 0x7C && // pipe
+	      str.charCodeAt(i + 1) !== 0x7C &&
+	      str.charCodeAt(i - 1) !== 0x7C
+	    ) {
+	      if (dir.expression === undefined) {
+	        // first filter, end of expression
+	        lastFilterIndex = i + 1
+	        dir.expression = str.slice(argIndex, i).trim()
+	      } else {
+	        // already has filter
+	        pushFilter()
+	      }
+	    } else {
+	      switch (c) {
+	        case 0x22: inDouble = true; break // "
+	        case 0x27: inSingle = true; break // '
+	        case 0x28: paren++; break         // (
+	        case 0x29: paren--; break         // )
+	        case 0x5B: square++; break        // [
+	        case 0x5D: square--; break        // ]
+	        case 0x7B: curly++; break         // {
+	        case 0x7D: curly--; break         // }
+	      }
+	    }
+	  }
+
+	  if (i === 0 || begin !== i) {
+	    pushDir()
+	  }
+
+	  cache.put(s, dirs)
+	  return dirs
+	}
 
 /***/ },
 /* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var config = __webpack_require__(56)
+	var extend = _.extend
+
+	/**
+	 * Option overwriting strategies are functions that handle
+	 * how to merge a parent option value and a child option
+	 * value into the final value.
+	 *
+	 * All strategy functions follow the same signature:
+	 *
+	 * @param {*} parentVal
+	 * @param {*} childVal
+	 * @param {Vue} [vm]
+	 */
+
+	var strats = Object.create(null)
+
+	/**
+	 * Helper that recursively merges two data objects together.
+	 */
+
+	function mergeData (to, from) {
+	  var key, toVal, fromVal
+	  for (key in from) {
+	    toVal = to[key]
+	    fromVal = from[key]
+	    if (!to.hasOwnProperty(key)) {
+	      to.$add(key, fromVal)
+	    } else if (_.isObject(toVal) && _.isObject(fromVal)) {
+	      mergeData(toVal, fromVal)
+	    }
+	  }
+	  return to
+	}
+
+	/**
+	 * Data
+	 */
+
+	strats.data = function (parentVal, childVal, vm) {
+	  if (!vm) {
+	    // in a Vue.extend merge, both should be functions
+	    if (!childVal) {
+	      return parentVal
+	    }
+	    if (typeof childVal !== 'function') {
+	      _.warn(
+	        'The "data" option should be a function ' +
+	        'that returns a per-instance value in component ' +
+	        'definitions.'
+	      )
+	      return parentVal
+	    }
+	    if (!parentVal) {
+	      return childVal
+	    }
+	    // when parentVal & childVal are both present,
+	    // we need to return a function that returns the
+	    // merged result of both functions... no need to
+	    // check if parentVal is a function here because
+	    // it has to be a function to pass previous merges.
+	    return function mergedDataFn () {
+	      return mergeData(
+	        childVal.call(this),
+	        parentVal.call(this)
+	      )
+	    }
+	  } else {
+	    // instance merge, return raw object
+	    var instanceData = typeof childVal === 'function'
+	      ? childVal.call(vm)
+	      : childVal
+	    var defaultData = typeof parentVal === 'function'
+	      ? parentVal.call(vm)
+	      : undefined
+	    if (instanceData) {
+	      return mergeData(instanceData, defaultData)
+	    } else {
+	      return defaultData
+	    }
+	  }
+	}
+
+	/**
+	 * El
+	 */
+
+	strats.el = function (parentVal, childVal, vm) {
+	  if (!vm && childVal && typeof childVal !== 'function') {
+	    _.warn(
+	      'The "el" option should be a function ' +
+	      'that returns a per-instance value in component ' +
+	      'definitions.'
+	    )
+	    return
+	  }
+	  var ret = childVal || parentVal
+	  // invoke the element factory if this is instance merge
+	  return vm && typeof ret === 'function'
+	    ? ret.call(vm)
+	    : ret
+	}
+
+	/**
+	 * Hooks and param attributes are merged as arrays.
+	 */
+
+	strats.created =
+	strats.ready =
+	strats.attached =
+	strats.detached =
+	strats.beforeCompile =
+	strats.compiled =
+	strats.beforeDestroy =
+	strats.destroyed =
+	strats.paramAttributes = function (parentVal, childVal) {
+	  return childVal
+	    ? parentVal
+	      ? parentVal.concat(childVal)
+	      : _.isArray(childVal)
+	        ? childVal
+	        : [childVal]
+	    : parentVal
+	}
+
+	/**
+	 * Assets
+	 *
+	 * When a vm is present (instance creation), we need to do
+	 * a three-way merge between constructor options, instance
+	 * options and parent options.
+	 */
+
+	strats.directives =
+	strats.filters =
+	strats.partials =
+	strats.transitions =
+	strats.components = function (parentVal, childVal, vm, key) {
+	  var ret = Object.create(
+	    vm && vm.$parent
+	      ? vm.$parent.$options[key]
+	      : _.Vue.options[key]
+	  )
+	  if (parentVal) {
+	    var keys = Object.keys(parentVal)
+	    var i = keys.length
+	    var field
+	    while (i--) {
+	      field = keys[i]
+	      ret[field] = parentVal[field]
+	    }
+	  }
+	  if (childVal) extend(ret, childVal)
+	  return ret
+	}
+
+	/**
+	 * Events & Watchers.
+	 *
+	 * Events & watchers hashes should not overwrite one
+	 * another, so we merge them as arrays.
+	 */
+
+	strats.watch =
+	strats.events = function (parentVal, childVal) {
+	  if (!childVal) return parentVal
+	  if (!parentVal) return childVal
+	  var ret = {}
+	  extend(ret, parentVal)
+	  for (var key in childVal) {
+	    var parent = ret[key]
+	    var child = childVal[key]
+	    if (parent && !_.isArray(parent)) {
+	      parent = [parent]
+	    }
+	    ret[key] = parent
+	      ? parent.concat(child)
+	      : [child]
+	  }
+	  return ret
+	}
+
+	/**
+	 * Other object hashes.
+	 */
+
+	strats.methods =
+	strats.computed = function (parentVal, childVal) {
+	  if (!childVal) return parentVal
+	  if (!parentVal) return childVal
+	  var ret = Object.create(parentVal)
+	  extend(ret, childVal)
+	  return ret
+	}
+
+	/**
+	 * Default strategy.
+	 */
+
+	var defaultStrat = function (parentVal, childVal) {
+	  return childVal === undefined
+	    ? parentVal
+	    : childVal
+	}
+
+	/**
+	 * Make sure component options get converted to actual
+	 * constructors.
+	 *
+	 * @param {Object} components
+	 */
+
+	function guardComponents (components) {
+	  if (components) {
+	    var def
+	    for (var key in components) {
+	      def = components[key]
+	      if (_.isPlainObject(def)) {
+	        def.name = key
+	        components[key] = _.Vue.extend(def)
+	      }
+	    }
+	  }
+	}
+
+	/**
+	 * Merge two option objects into a new one.
+	 * Core utility used in both instantiation and inheritance.
+	 *
+	 * @param {Object} parent
+	 * @param {Object} child
+	 * @param {Vue} [vm] - if vm is present, indicates this is
+	 *                     an instantiation merge.
+	 */
+
+	module.exports = function mergeOptions (parent, child, vm) {
+	  guardComponents(child.components)
+	  var options = {}
+	  var key
+	  if (child.mixins) {
+	    for (var i = 0, l = child.mixins.length; i < l; i++) {
+	      parent = mergeOptions(parent, child.mixins[i], vm)
+	    }
+	  }
+	  for (key in parent) {
+	    merge(key)
+	  }
+	  for (key in child) {
+	    if (!(parent.hasOwnProperty(key))) {
+	      merge(key)
+	    }
+	  }
+	  function merge (key) {
+	    var strat = strats[key] || defaultStrat
+	    options[key] = strat(parent[key], child[key], vm, key)
+	  }
+	  return options
+	}
+
+/***/ },
+/* 58 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var _ = __webpack_require__(74)
+	var config = __webpack_require__(59)
 	var textParser = __webpack_require__(73)
-	var dirParser = __webpack_require__(58)
+	var dirParser = __webpack_require__(56)
 	var templateParser = __webpack_require__(72)
 
 	/**
@@ -9967,431 +10303,95 @@
 	}
 
 /***/ },
-/* 58 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var _ = __webpack_require__(74)
-	var Cache = __webpack_require__(52)
-	var cache = new Cache(1000)
-	var argRE = /^[^\{\?]+$|^'[^']*'$|^"[^"]*"$/
-	var filterTokenRE = /[^\s'"]+|'[^']+'|"[^"]+"/g
-
-	/**
-	 * Parser state
-	 */
-
-	var str
-	var c, i, l
-	var inSingle
-	var inDouble
-	var curly
-	var square
-	var paren
-	var begin
-	var argIndex
-	var dirs
-	var dir
-	var lastFilterIndex
-	var arg
-
-	/**
-	 * Push a directive object into the result Array
-	 */
-
-	function pushDir () {
-	  dir.raw = str.slice(begin, i).trim()
-	  if (dir.expression === undefined) {
-	    dir.expression = str.slice(argIndex, i).trim()
-	  } else if (lastFilterIndex !== begin) {
-	    pushFilter()
-	  }
-	  if (i === 0 || dir.expression) {
-	    dirs.push(dir)
-	  }
-	}
-
-	/**
-	 * Push a filter to the current directive object
-	 */
-
-	function pushFilter () {
-	  var exp = str.slice(lastFilterIndex, i).trim()
-	  var filter
-	  if (exp) {
-	    filter = {}
-	    var tokens = exp.match(filterTokenRE)
-	    filter.name = tokens[0]
-	    filter.args = tokens.length > 1 ? tokens.slice(1) : null
-	  }
-	  if (filter) {
-	    (dir.filters = dir.filters || []).push(filter)
-	  }
-	  lastFilterIndex = i + 1
-	}
-
-	/**
-	 * Parse a directive string into an Array of AST-like
-	 * objects representing directives.
-	 *
-	 * Example:
-	 *
-	 * "click: a = a + 1 | uppercase" will yield:
-	 * {
-	 *   arg: 'click',
-	 *   expression: 'a = a + 1',
-	 *   filters: [
-	 *     { name: 'uppercase', args: null }
-	 *   ]
-	 * }
-	 *
-	 * @param {String} str
-	 * @return {Array<Object>}
-	 */
-
-	exports.parse = function (s) {
-
-	  var hit = cache.get(s)
-	  if (hit) {
-	    return hit
-	  }
-
-	  // reset parser state
-	  str = s
-	  inSingle = inDouble = false
-	  curly = square = paren = begin = argIndex = 0
-	  lastFilterIndex = 0
-	  dirs = []
-	  dir = {}
-	  arg = null
-
-	  for (i = 0, l = str.length; i < l; i++) {
-	    c = str.charCodeAt(i)
-	    if (inSingle) {
-	      // check single quote
-	      if (c === 0x27) inSingle = !inSingle
-	    } else if (inDouble) {
-	      // check double quote
-	      if (c === 0x22) inDouble = !inDouble
-	    } else if (
-	      c === 0x2C && // comma
-	      !paren && !curly && !square
-	    ) {
-	      // reached the end of a directive
-	      pushDir()
-	      // reset & skip the comma
-	      dir = {}
-	      begin = argIndex = lastFilterIndex = i + 1
-	    } else if (
-	      c === 0x3A && // colon
-	      !dir.expression &&
-	      !dir.arg
-	    ) {
-	      // argument
-	      arg = str.slice(begin, i).trim()
-	      // test for valid argument here
-	      // since we may have caught stuff like first half of
-	      // an object literal or a ternary expression.
-	      if (argRE.test(arg)) {
-	        argIndex = i + 1
-	        dir.arg = _.stripQuotes(arg) || arg
-	      }
-	    } else if (
-	      c === 0x7C && // pipe
-	      str.charCodeAt(i + 1) !== 0x7C &&
-	      str.charCodeAt(i - 1) !== 0x7C
-	    ) {
-	      if (dir.expression === undefined) {
-	        // first filter, end of expression
-	        lastFilterIndex = i + 1
-	        dir.expression = str.slice(argIndex, i).trim()
-	      } else {
-	        // already has filter
-	        pushFilter()
-	      }
-	    } else {
-	      switch (c) {
-	        case 0x22: inDouble = true; break // "
-	        case 0x27: inSingle = true; break // '
-	        case 0x28: paren++; break         // (
-	        case 0x29: paren--; break         // )
-	        case 0x5B: square++; break        // [
-	        case 0x5D: square--; break        // ]
-	        case 0x7B: curly++; break         // {
-	        case 0x7D: curly--; break         // }
-	      }
-	    }
-	  }
-
-	  if (i === 0 || begin !== i) {
-	    pushDir()
-	  }
-
-	  cache.put(s, dirs)
-	  return dirs
-	}
-
-/***/ },
 /* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(74)
-	var extend = _.extend
+	module.exports = {
+
+	  /**
+	   * The prefix to look for when parsing directives.
+	   *
+	   * @type {String}
+	   */
+
+	  prefix: 'v-',
+
+	  /**
+	   * Whether to print debug messages.
+	   * Also enables stack trace for warnings.
+	   *
+	   * @type {Boolean}
+	   */
+
+	  debug: false,
+
+	  /**
+	   * Whether to suppress warnings.
+	   *
+	   * @type {Boolean}
+	   */
+
+	  silent: false,
+
+	  /**
+	   * Whether allow observer to alter data objects'
+	   * __proto__.
+	   *
+	   * @type {Boolean}
+	   */
+
+	  proto: true,
+
+	  /**
+	   * Whether to parse mustache tags in templates.
+	   *
+	   * @type {Boolean}
+	   */
+
+	  interpolate: true,
+
+	  /**
+	   * Whether to use async rendering.
+	   */
+
+	  async: true,
+
+	  /**
+	   * Whether to warn against errors caught when evaluating
+	   * expressions.
+	   */
+
+	  warnExpressionErrors: true,
+
+	  /**
+	   * Internal flag to indicate the delimiters have been
+	   * changed.
+	   *
+	   * @type {Boolean}
+	   */
+
+	  _delimitersChanged: true
+
+	}
 
 	/**
-	 * Option overwriting strategies are functions that handle
-	 * how to merge a parent option value and a child option
-	 * value into the final value.
+	 * Interpolation delimiters.
+	 * We need to mark the changed flag so that the text parser
+	 * knows it needs to recompile the regex.
 	 *
-	 * All strategy functions follow the same signature:
-	 *
-	 * @param {*} parentVal
-	 * @param {*} childVal
-	 * @param {Vue} [vm]
+	 * @type {Array<String>}
 	 */
 
-	var strats = Object.create(null)
-
-	/**
-	 * Helper that recursively merges two data objects together.
-	 */
-
-	function mergeData (to, from) {
-	  var key, toVal, fromVal
-	  for (key in from) {
-	    toVal = to[key]
-	    fromVal = from[key]
-	    if (!to.hasOwnProperty(key)) {
-	      to.$add(key, fromVal)
-	    } else if (_.isObject(toVal) && _.isObject(fromVal)) {
-	      mergeData(toVal, fromVal)
-	    }
+	var delimiters = ['{{', '}}']
+	Object.defineProperty(module.exports, 'delimiters', {
+	  get: function () {
+	    return delimiters
+	  },
+	  set: function (val) {
+	    delimiters = val
+	    this._delimitersChanged = true
 	  }
-	  return to
-	}
-
-	/**
-	 * Data
-	 */
-
-	strats.data = function (parentVal, childVal, vm) {
-	  if (!vm) {
-	    // in a Vue.extend merge, both should be functions
-	    if (!childVal) {
-	      return parentVal
-	    }
-	    if (typeof childVal !== 'function') {
-	      _.warn(
-	        'The "data" option should be a function ' +
-	        'that returns a per-instance value in component ' +
-	        'definitions.'
-	      )
-	      return parentVal
-	    }
-	    if (!parentVal) {
-	      return childVal
-	    }
-	    // when parentVal & childVal are both present,
-	    // we need to return a function that returns the
-	    // merged result of both functions... no need to
-	    // check if parentVal is a function here because
-	    // it has to be a function to pass previous merges.
-	    return function mergedDataFn () {
-	      return mergeData(
-	        childVal.call(this),
-	        parentVal.call(this)
-	      )
-	    }
-	  } else {
-	    // instance merge, return raw object
-	    var instanceData = typeof childVal === 'function'
-	      ? childVal.call(vm)
-	      : childVal
-	    var defaultData = typeof parentVal === 'function'
-	      ? parentVal.call(vm)
-	      : undefined
-	    if (instanceData) {
-	      return mergeData(instanceData, defaultData)
-	    } else {
-	      return defaultData
-	    }
-	  }
-	}
-
-	/**
-	 * El
-	 */
-
-	strats.el = function (parentVal, childVal, vm) {
-	  if (!vm && childVal && typeof childVal !== 'function') {
-	    _.warn(
-	      'The "el" option should be a function ' +
-	      'that returns a per-instance value in component ' +
-	      'definitions.'
-	    )
-	    return
-	  }
-	  var ret = childVal || parentVal
-	  // invoke the element factory if this is instance merge
-	  return vm && typeof ret === 'function'
-	    ? ret.call(vm)
-	    : ret
-	}
-
-	/**
-	 * Hooks and param attributes are merged as arrays.
-	 */
-
-	strats.created =
-	strats.ready =
-	strats.attached =
-	strats.detached =
-	strats.beforeCompile =
-	strats.compiled =
-	strats.beforeDestroy =
-	strats.destroyed =
-	strats.paramAttributes = function (parentVal, childVal) {
-	  return childVal
-	    ? parentVal
-	      ? parentVal.concat(childVal)
-	      : _.isArray(childVal)
-	        ? childVal
-	        : [childVal]
-	    : parentVal
-	}
-
-	/**
-	 * Assets
-	 *
-	 * When a vm is present (instance creation), we need to do
-	 * a three-way merge between constructor options, instance
-	 * options and parent options.
-	 */
-
-	strats.directives =
-	strats.filters =
-	strats.partials =
-	strats.transitions =
-	strats.components = function (parentVal, childVal, vm, key) {
-	  var ret = Object.create(
-	    vm && vm.$parent
-	      ? vm.$parent.$options[key]
-	      : _.Vue.options[key]
-	  )
-	  if (parentVal) {
-	    var keys = Object.keys(parentVal)
-	    var i = keys.length
-	    var field
-	    while (i--) {
-	      field = keys[i]
-	      ret[field] = parentVal[field]
-	    }
-	  }
-	  if (childVal) extend(ret, childVal)
-	  return ret
-	}
-
-	/**
-	 * Events & Watchers.
-	 *
-	 * Events & watchers hashes should not overwrite one
-	 * another, so we merge them as arrays.
-	 */
-
-	strats.watch =
-	strats.events = function (parentVal, childVal) {
-	  if (!childVal) return parentVal
-	  if (!parentVal) return childVal
-	  var ret = {}
-	  extend(ret, parentVal)
-	  for (var key in childVal) {
-	    var parent = ret[key]
-	    var child = childVal[key]
-	    if (parent && !_.isArray(parent)) {
-	      parent = [parent]
-	    }
-	    ret[key] = parent
-	      ? parent.concat(child)
-	      : [child]
-	  }
-	  return ret
-	}
-
-	/**
-	 * Other object hashes.
-	 */
-
-	strats.methods =
-	strats.computed = function (parentVal, childVal) {
-	  if (!childVal) return parentVal
-	  if (!parentVal) return childVal
-	  var ret = Object.create(parentVal)
-	  extend(ret, childVal)
-	  return ret
-	}
-
-	/**
-	 * Default strategy.
-	 */
-
-	var defaultStrat = function (parentVal, childVal) {
-	  return childVal === undefined
-	    ? parentVal
-	    : childVal
-	}
-
-	/**
-	 * Make sure component options get converted to actual
-	 * constructors.
-	 *
-	 * @param {Object} components
-	 */
-
-	function guardComponents (components) {
-	  if (components) {
-	    var def
-	    for (var key in components) {
-	      def = components[key]
-	      if (_.isPlainObject(def)) {
-	        def.name = key
-	        components[key] = _.Vue.extend(def)
-	      }
-	    }
-	  }
-	}
-
-	/**
-	 * Merge two option objects into a new one.
-	 * Core utility used in both instantiation and inheritance.
-	 *
-	 * @param {Object} parent
-	 * @param {Object} child
-	 * @param {Vue} [vm] - if vm is present, indicates this is
-	 *                     an instantiation merge.
-	 */
-
-	module.exports = function mergeOptions (parent, child, vm) {
-	  guardComponents(child.components)
-	  var options = {}
-	  var key
-	  if (child.mixins) {
-	    for (var i = 0, l = child.mixins.length; i < l; i++) {
-	      parent = mergeOptions(parent, child.mixins[i], vm)
-	    }
-	  }
-	  for (key in parent) {
-	    merge(key)
-	  }
-	  for (key in child) {
-	    if (!(parent.hasOwnProperty(key))) {
-	      merge(key)
-	    }
-	  }
-	  function merge (key) {
-	    var strat = strats[key] || defaultStrat
-	    options[key] = strat(parent[key], child[key], vm, key)
-	  }
-	  return options
-	}
+	})
 
 /***/ },
 /* 60 */
@@ -10818,7 +10818,7 @@
 /* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var mergeOptions = __webpack_require__(59)
+	var mergeOptions = __webpack_require__(57)
 
 	/**
 	 * The main init sequence. This is called for every
@@ -10971,7 +10971,7 @@
 
 	var _ = __webpack_require__(74)
 	var Path = __webpack_require__(71)
-	var Cache = __webpack_require__(52)
+	var Cache = __webpack_require__(54)
 	var expressionCache = new Cache(1000)
 
 	var keywords =
@@ -11217,7 +11217,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Cache = __webpack_require__(52)
+	var Cache = __webpack_require__(54)
 	var pathCache = new Cache(1000)
 	var identRE = /^[$_a-zA-Z]+[\w$]*$/
 
@@ -11519,7 +11519,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Cache = __webpack_require__(52)
+	var Cache = __webpack_require__(54)
 	var templateCache = new Cache(1000)
 	var idSelectorCache = new Cache(1000)
 
@@ -11783,9 +11783,9 @@
 /* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Cache = __webpack_require__(52)
-	var config = __webpack_require__(56)
-	var dirParser = __webpack_require__(58)
+	var Cache = __webpack_require__(54)
+	var config = __webpack_require__(59)
+	var dirParser = __webpack_require__(56)
 	var regexEscapeRE = /[-.*+?^${}()|[\]\/\\]/g
 	var cache, tagRE, htmlRE, firstChar, lastChar
 
@@ -12279,7 +12279,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var config = __webpack_require__(56)
+	var config = __webpack_require__(59)
 	var Dep = __webpack_require__(69)
 	var arrayMethods = __webpack_require__(96)
 	var arrayKeys = Object.getOwnPropertyNames(arrayMethods)
@@ -12520,7 +12520,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var mergeOptions = __webpack_require__(59)
+	var mergeOptions = __webpack_require__(57)
 
 	/**
 	 * Expose useful internals
@@ -12528,10 +12528,10 @@
 
 	exports.util = _
 	exports.nextTick = _.nextTick
-	exports.config = __webpack_require__(56)
+	exports.config = __webpack_require__(59)
 
 	exports.compiler = {
-	  compile: __webpack_require__(57),
+	  compile: __webpack_require__(58),
 	  transclude: __webpack_require__(60)
 	}
 
@@ -12539,7 +12539,7 @@
 	  path: __webpack_require__(71),
 	  text: __webpack_require__(73),
 	  template: __webpack_require__(72),
-	  directive: __webpack_require__(58),
+	  directive: __webpack_require__(56),
 	  expression: __webpack_require__(70)
 	}
 
@@ -13037,8 +13037,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Directive = __webpack_require__(54)
-	var compile = __webpack_require__(57)
+	var Directive = __webpack_require__(53)
+	var compile = __webpack_require__(58)
 	var transclude = __webpack_require__(60)
 
 	/**
@@ -13245,7 +13245,7 @@
 	var Watcher = __webpack_require__(55)
 	var Path = __webpack_require__(71)
 	var textParser = __webpack_require__(73)
-	var dirParser = __webpack_require__(58)
+	var dirParser = __webpack_require__(56)
 	var expParser = __webpack_require__(70)
 	var filterRE = /[^|]\|[^|]/
 
@@ -13860,7 +13860,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var compile = __webpack_require__(57)
+	var compile = __webpack_require__(58)
 
 	/**
 	 * Set instance target element and kick off the compilation
@@ -14277,7 +14277,7 @@
 /* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var config = __webpack_require__(56)
+	var config = __webpack_require__(59)
 
 	/**
 	 * Check if a node is in the document.
@@ -14568,7 +14568,7 @@
 /* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var config = __webpack_require__(56)
+	var config = __webpack_require__(59)
 
 	/**
 	 * Enable debug utilities. The enableDebug() function and
@@ -15212,7 +15212,7 @@
 /* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var config = __webpack_require__(56)
+	var config = __webpack_require__(59)
 
 	module.exports = {
 
@@ -15583,9 +15583,9 @@
 	var textParser = __webpack_require__(73)
 	var expParser = __webpack_require__(70)
 	var templateParser = __webpack_require__(72)
-	var compile = __webpack_require__(57)
+	var compile = __webpack_require__(58)
 	var transclude = __webpack_require__(60)
-	var mergeOptions = __webpack_require__(59)
+	var mergeOptions = __webpack_require__(57)
 	var uid = 0
 
 	module.exports = {
@@ -16122,7 +16122,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var compile = __webpack_require__(57)
+	var compile = __webpack_require__(58)
 	var templateParser = __webpack_require__(72)
 	var transition = __webpack_require__(75)
 
@@ -16611,7 +16611,7 @@
 
 	var _ = __webpack_require__(74)
 	var Watcher = __webpack_require__(55)
-	var dirParser = __webpack_require__(58)
+	var dirParser = __webpack_require__(56)
 
 	module.exports = {
 
