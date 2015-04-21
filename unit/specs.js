@@ -5280,7 +5280,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var def = __webpack_require__(66)
+	var def = __webpack_require__(65)
 	var Vue = __webpack_require__(53)
 
 	function checkPrefixedProp (prop) {
@@ -5387,7 +5387,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var def = __webpack_require__(65)
+	var def = __webpack_require__(66)
 
 	if (_.inBrowser) {
 	  describe('v-text', function () {
@@ -10675,26 +10675,6 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-
-	module.exports = {
-
-	  bind: function () {
-	    this.attr = this.el.nodeType === 3
-	      ? 'nodeValue'
-	      : 'textContent'
-	  },
-
-	  update: function (value) {
-	    this.el[this.attr] = _.toString(value)
-	  }
-	  
-	}
-
-/***/ },
-/* 66 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var _ = __webpack_require__(74)
 	var prefixes = ['-webkit-', '-moz-', '-ms-']
 	var camelPrefixes = ['Webkit', 'Moz', 'ms']
 	var importantRE = /!important;?$/
@@ -10793,6 +10773,26 @@
 	      return prefixes[i] + prop
 	    }
 	  }
+	}
+
+/***/ },
+/* 66 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var _ = __webpack_require__(74)
+
+	module.exports = {
+
+	  bind: function () {
+	    this.attr = this.el.nodeType === 3
+	      ? 'nodeValue'
+	      : 'textContent'
+	  },
+
+	  update: function (value) {
+	    this.el[this.attr] = _.toString(value)
+	  }
+	  
 	}
 
 /***/ },
@@ -14634,7 +14634,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// manipulation directives
-	exports.text       = __webpack_require__(65)
+	exports.text       = __webpack_require__(66)
 	exports.html       = __webpack_require__(63)
 	exports.attr       = __webpack_require__(61)
 	exports.show       = __webpack_require__(64)
@@ -14642,7 +14642,7 @@
 	exports.el         = __webpack_require__(98)
 	exports.ref        = __webpack_require__(99)
 	exports.cloak      = __webpack_require__(100)
-	exports.style      = __webpack_require__(66)
+	exports.style      = __webpack_require__(65)
 	exports.partial    = __webpack_require__(101)
 	exports.transition = __webpack_require__(67)
 
