@@ -1927,8 +1927,8 @@
 
 	var Vue = __webpack_require__(53)
 	var _ = __webpack_require__(74)
-	var dirParser = __webpack_require__(59)
-	var merge = __webpack_require__(60)
+	var dirParser = __webpack_require__(58)
+	var merge = __webpack_require__(59)
 	var compile = __webpack_require__(57)
 
 	if (_.inBrowser) {
@@ -2147,7 +2147,7 @@
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var transclude = __webpack_require__(58)
+	var transclude = __webpack_require__(60)
 	var _ = __webpack_require__(74)
 
 	if (_.inBrowser) {
@@ -5280,7 +5280,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var def = __webpack_require__(65)
+	var def = __webpack_require__(66)
 	var Vue = __webpack_require__(53)
 
 	function checkPrefixedProp (prop) {
@@ -5387,7 +5387,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var def = __webpack_require__(66)
+	var def = __webpack_require__(65)
 
 	if (_.inBrowser) {
 	  describe('v-text', function () {
@@ -6560,7 +6560,7 @@
 /* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var parse = __webpack_require__(59).parse
+	var parse = __webpack_require__(58).parse
 
 	describe('Directive Parser', function () {
 
@@ -8223,7 +8223,7 @@
 
 	var _ = __webpack_require__(74)
 	var Vue = __webpack_require__(53)
-	var merge = __webpack_require__(60)
+	var merge = __webpack_require__(59)
 
 	describe('Util - Option merging', function () {
 	  
@@ -9395,7 +9395,7 @@
 	var _ = __webpack_require__(74)
 	var config = __webpack_require__(56)
 	var textParser = __webpack_require__(73)
-	var dirParser = __webpack_require__(59)
+	var dirParser = __webpack_require__(58)
 	var templateParser = __webpack_require__(72)
 
 	/**
@@ -9971,167 +9971,6 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var templateParser = __webpack_require__(72)
-
-	/**
-	 * Process an element or a DocumentFragment based on a
-	 * instance option object. This allows us to transclude
-	 * a template node/fragment before the instance is created,
-	 * so the processed fragment can then be cloned and reused
-	 * in v-repeat.
-	 *
-	 * @param {Element} el
-	 * @param {Object} options
-	 * @return {Element|DocumentFragment}
-	 */
-
-	module.exports = function transclude (el, options) {
-	  // for template tags, what we want is its content as
-	  // a documentFragment (for block instances)
-	  if (el.tagName === 'TEMPLATE') {
-	    el = templateParser.parse(el)
-	  }
-	  if (options && options.template) {
-	    el = transcludeTemplate(el, options)
-	  }
-	  if (el instanceof DocumentFragment) {
-	    _.prepend(document.createComment('v-start'), el)
-	    el.appendChild(document.createComment('v-end'))
-	  }
-	  return el
-	}
-
-	/**
-	 * Process the template option.
-	 * If the replace option is true this will swap the $el.
-	 *
-	 * @param {Element} el
-	 * @param {Object} options
-	 * @return {Element|DocumentFragment}
-	 */
-
-	function transcludeTemplate (el, options) {
-	  var template = options.template
-	  var frag = templateParser.parse(template, true)
-	  if (!frag) {
-	    _.warn('Invalid template option: ' + template)
-	  } else {
-	    var rawContent = options._content || _.extractContent(el)
-	    if (options.replace) {
-	      if (frag.childNodes.length > 1) {
-	        transcludeContent(frag, rawContent)
-	        _.copyAttributes(el, frag.firstChild)
-	        return frag
-	      } else {
-	        var replacer = frag.firstChild
-	        _.copyAttributes(el, replacer)
-	        transcludeContent(replacer, rawContent)
-	        return replacer
-	      }
-	    } else {
-	      el.appendChild(frag)
-	      transcludeContent(el, rawContent)
-	      return el
-	    }
-	  }
-	}
-
-	/**
-	 * Resolve <content> insertion points mimicking the behavior
-	 * of the Shadow DOM spec:
-	 *
-	 *   http://w3c.github.io/webcomponents/spec/shadow/#insertion-points
-	 *
-	 * @param {Element|DocumentFragment} el
-	 * @param {Element} raw
-	 */
-
-	function transcludeContent (el, raw) {
-	  var outlets = getOutlets(el)
-	  var i = outlets.length
-	  if (!i) return
-	  var outlet, select, selected, j, main
-
-	  function isDirectChild (node) {
-	    return node.parentNode === raw
-	  }
-
-	  // first pass, collect corresponding content
-	  // for each outlet.
-	  while (i--) {
-	    outlet = outlets[i]
-	    if (raw) {
-	      select = outlet.getAttribute('select')
-	      if (select) {  // select content
-	        selected = raw.querySelectorAll(select)
-	        if (selected.length) {
-	          // according to Shadow DOM spec, `select` can
-	          // only select direct children of the host node.
-	          // enforcing this also fixes #786.
-	          selected = [].filter.call(selected, isDirectChild)
-	        }
-	        outlet.content = selected.length
-	          ? selected
-	          : _.toArray(outlet.childNodes)
-	      } else { // default content
-	        main = outlet
-	      }
-	    } else { // fallback content
-	      outlet.content = _.toArray(outlet.childNodes)
-	    }
-	  }
-	  // second pass, actually insert the contents
-	  for (i = 0, j = outlets.length; i < j; i++) {
-	    outlet = outlets[i]
-	    if (outlet !== main) {
-	      insertContentAt(outlet, outlet.content)
-	    }
-	  }
-	  // finally insert the main content
-	  if (main) {
-	    insertContentAt(main, _.toArray(raw.childNodes))
-	  }
-	}
-
-	/**
-	 * Get <content> outlets from the element/list
-	 *
-	 * @param {Element|Array} el
-	 * @return {Array}
-	 */
-
-	var concat = [].concat
-	function getOutlets (el) {
-	  return _.isArray(el)
-	    ? concat.apply([], el.map(getOutlets))
-	    : el.querySelectorAll
-	      ? _.toArray(el.querySelectorAll('content'))
-	      : []
-	}
-
-	/**
-	 * Insert an array of nodes at outlet,
-	 * then remove the outlet.
-	 *
-	 * @param {Element} outlet
-	 * @param {Array} contents
-	 */
-
-	function insertContentAt (outlet, contents) {
-	  // not using util DOM methods here because
-	  // parentNode can be cached
-	  var parent = outlet.parentNode
-	  for (var i = 0, j = contents.length; i < j; i++) {
-	    parent.insertBefore(contents[i], outlet)
-	  }
-	  parent.removeChild(outlet)
-	}
-
-/***/ },
-/* 59 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var _ = __webpack_require__(74)
 	var Cache = __webpack_require__(52)
 	var cache = new Cache(1000)
 	var argRE = /^[^\{\?]+$|^'[^']*'$|^"[^"]*"$/
@@ -10292,7 +10131,7 @@
 	}
 
 /***/ },
-/* 60 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
@@ -10555,6 +10394,167 @@
 	}
 
 /***/ },
+/* 60 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var _ = __webpack_require__(74)
+	var templateParser = __webpack_require__(72)
+
+	/**
+	 * Process an element or a DocumentFragment based on a
+	 * instance option object. This allows us to transclude
+	 * a template node/fragment before the instance is created,
+	 * so the processed fragment can then be cloned and reused
+	 * in v-repeat.
+	 *
+	 * @param {Element} el
+	 * @param {Object} options
+	 * @return {Element|DocumentFragment}
+	 */
+
+	module.exports = function transclude (el, options) {
+	  // for template tags, what we want is its content as
+	  // a documentFragment (for block instances)
+	  if (el.tagName === 'TEMPLATE') {
+	    el = templateParser.parse(el)
+	  }
+	  if (options && options.template) {
+	    el = transcludeTemplate(el, options)
+	  }
+	  if (el instanceof DocumentFragment) {
+	    _.prepend(document.createComment('v-start'), el)
+	    el.appendChild(document.createComment('v-end'))
+	  }
+	  return el
+	}
+
+	/**
+	 * Process the template option.
+	 * If the replace option is true this will swap the $el.
+	 *
+	 * @param {Element} el
+	 * @param {Object} options
+	 * @return {Element|DocumentFragment}
+	 */
+
+	function transcludeTemplate (el, options) {
+	  var template = options.template
+	  var frag = templateParser.parse(template, true)
+	  if (!frag) {
+	    _.warn('Invalid template option: ' + template)
+	  } else {
+	    var rawContent = options._content || _.extractContent(el)
+	    if (options.replace) {
+	      if (frag.childNodes.length > 1) {
+	        transcludeContent(frag, rawContent)
+	        _.copyAttributes(el, frag.firstChild)
+	        return frag
+	      } else {
+	        var replacer = frag.firstChild
+	        _.copyAttributes(el, replacer)
+	        transcludeContent(replacer, rawContent)
+	        return replacer
+	      }
+	    } else {
+	      el.appendChild(frag)
+	      transcludeContent(el, rawContent)
+	      return el
+	    }
+	  }
+	}
+
+	/**
+	 * Resolve <content> insertion points mimicking the behavior
+	 * of the Shadow DOM spec:
+	 *
+	 *   http://w3c.github.io/webcomponents/spec/shadow/#insertion-points
+	 *
+	 * @param {Element|DocumentFragment} el
+	 * @param {Element} raw
+	 */
+
+	function transcludeContent (el, raw) {
+	  var outlets = getOutlets(el)
+	  var i = outlets.length
+	  if (!i) return
+	  var outlet, select, selected, j, main
+
+	  function isDirectChild (node) {
+	    return node.parentNode === raw
+	  }
+
+	  // first pass, collect corresponding content
+	  // for each outlet.
+	  while (i--) {
+	    outlet = outlets[i]
+	    if (raw) {
+	      select = outlet.getAttribute('select')
+	      if (select) {  // select content
+	        selected = raw.querySelectorAll(select)
+	        if (selected.length) {
+	          // according to Shadow DOM spec, `select` can
+	          // only select direct children of the host node.
+	          // enforcing this also fixes #786.
+	          selected = [].filter.call(selected, isDirectChild)
+	        }
+	        outlet.content = selected.length
+	          ? selected
+	          : _.toArray(outlet.childNodes)
+	      } else { // default content
+	        main = outlet
+	      }
+	    } else { // fallback content
+	      outlet.content = _.toArray(outlet.childNodes)
+	    }
+	  }
+	  // second pass, actually insert the contents
+	  for (i = 0, j = outlets.length; i < j; i++) {
+	    outlet = outlets[i]
+	    if (outlet !== main) {
+	      insertContentAt(outlet, outlet.content)
+	    }
+	  }
+	  // finally insert the main content
+	  if (main) {
+	    insertContentAt(main, _.toArray(raw.childNodes))
+	  }
+	}
+
+	/**
+	 * Get <content> outlets from the element/list
+	 *
+	 * @param {Element|Array} el
+	 * @return {Array}
+	 */
+
+	var concat = [].concat
+	function getOutlets (el) {
+	  return _.isArray(el)
+	    ? concat.apply([], el.map(getOutlets))
+	    : el.querySelectorAll
+	      ? _.toArray(el.querySelectorAll('content'))
+	      : []
+	}
+
+	/**
+	 * Insert an array of nodes at outlet,
+	 * then remove the outlet.
+	 *
+	 * @param {Element} outlet
+	 * @param {Array} contents
+	 */
+
+	function insertContentAt (outlet, contents) {
+	  // not using util DOM methods here because
+	  // parentNode can be cached
+	  var parent = outlet.parentNode
+	  for (var i = 0, j = contents.length; i < j; i++) {
+	    parent.insertBefore(contents[i], outlet)
+	  }
+	  parent.removeChild(outlet)
+	}
+
+/***/ },
 /* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -10675,6 +10675,26 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
+
+	module.exports = {
+
+	  bind: function () {
+	    this.attr = this.el.nodeType === 3
+	      ? 'nodeValue'
+	      : 'textContent'
+	  },
+
+	  update: function (value) {
+	    this.el[this.attr] = _.toString(value)
+	  }
+	  
+	}
+
+/***/ },
+/* 66 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var _ = __webpack_require__(74)
 	var prefixes = ['-webkit-', '-moz-', '-ms-']
 	var camelPrefixes = ['Webkit', 'Moz', 'ms']
 	var importantRE = /!important;?$/
@@ -10776,26 +10796,6 @@
 	}
 
 /***/ },
-/* 66 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var _ = __webpack_require__(74)
-
-	module.exports = {
-
-	  bind: function () {
-	    this.attr = this.el.nodeType === 3
-	      ? 'nodeValue'
-	      : 'textContent'
-	  },
-
-	  update: function (value) {
-	    this.el[this.attr] = _.toString(value)
-	  }
-	  
-	}
-
-/***/ },
 /* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -10818,7 +10818,7 @@
 /* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var mergeOptions = __webpack_require__(60)
+	var mergeOptions = __webpack_require__(59)
 
 	/**
 	 * The main init sequence. This is called for every
@@ -10877,6 +10877,10 @@
 	  // need to keep track of them so that we can call
 	  // attached/detached hooks on them.
 	  this._transCpnts = null
+
+	  // props used in v-repeat diffing
+	  this._new = true
+	  this._reused = false
 
 	  // merge options.
 	  options = this.$options = mergeOptions(
@@ -11781,7 +11785,7 @@
 
 	var Cache = __webpack_require__(52)
 	var config = __webpack_require__(56)
-	var dirParser = __webpack_require__(59)
+	var dirParser = __webpack_require__(58)
 	var regexEscapeRE = /[-.*+?^${}()|[\]\/\\]/g
 	var cache, tagRE, htmlRE, firstChar, lastChar
 
@@ -12516,7 +12520,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var mergeOptions = __webpack_require__(60)
+	var mergeOptions = __webpack_require__(59)
 
 	/**
 	 * Expose useful internals
@@ -12528,14 +12532,14 @@
 
 	exports.compiler = {
 	  compile: __webpack_require__(57),
-	  transclude: __webpack_require__(58)
+	  transclude: __webpack_require__(60)
 	}
 
 	exports.parsers = {
 	  path: __webpack_require__(71),
 	  text: __webpack_require__(73),
 	  template: __webpack_require__(72),
-	  directive: __webpack_require__(59),
+	  directive: __webpack_require__(58),
 	  expression: __webpack_require__(70)
 	}
 
@@ -13035,7 +13039,7 @@
 	var _ = __webpack_require__(74)
 	var Directive = __webpack_require__(54)
 	var compile = __webpack_require__(57)
-	var transclude = __webpack_require__(58)
+	var transclude = __webpack_require__(60)
 
 	/**
 	 * Transclude, compile and link element.
@@ -13241,7 +13245,7 @@
 	var Watcher = __webpack_require__(55)
 	var Path = __webpack_require__(71)
 	var textParser = __webpack_require__(73)
-	var dirParser = __webpack_require__(59)
+	var dirParser = __webpack_require__(58)
 	var expParser = __webpack_require__(70)
 	var filterRE = /[^|]\|[^|]/
 
@@ -14630,7 +14634,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// manipulation directives
-	exports.text       = __webpack_require__(66)
+	exports.text       = __webpack_require__(65)
 	exports.html       = __webpack_require__(63)
 	exports.attr       = __webpack_require__(61)
 	exports.show       = __webpack_require__(64)
@@ -14638,7 +14642,7 @@
 	exports.el         = __webpack_require__(98)
 	exports.ref        = __webpack_require__(99)
 	exports.cloak      = __webpack_require__(100)
-	exports.style      = __webpack_require__(65)
+	exports.style      = __webpack_require__(66)
 	exports.partial    = __webpack_require__(101)
 	exports.transition = __webpack_require__(67)
 
@@ -15574,15 +15578,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var config = __webpack_require__(56)
 	var isObject = _.isObject
 	var isPlainObject = _.isPlainObject
 	var textParser = __webpack_require__(73)
 	var expParser = __webpack_require__(70)
 	var templateParser = __webpack_require__(72)
 	var compile = __webpack_require__(57)
-	var transclude = __webpack_require__(58)
-	var mergeOptions = __webpack_require__(60)
+	var transclude = __webpack_require__(60)
+	var mergeOptions = __webpack_require__(59)
 	var uid = 0
 
 	module.exports = {
@@ -15624,7 +15627,6 @@
 	      this._checkParam('track-by') ||
 	      this._checkParam('trackby') // 0.11.0 compat
 	    this.cache = Object.create(null)
-	    this.checkUpdateStrategy()
 	  },
 
 	  /**
@@ -15665,8 +15667,10 @@
 	    var id = _.attr(this.el, 'component')
 	    var options = this.vm.$options
 	    if (!id) {
-	      this.Ctor = _.Vue // default constructor
-	      this.inherit = true // inline repeats should inherit
+	      // default constructor
+	      this.Ctor = _.Vue
+	      // inline repeats should inherit
+	      this.inherit = true
 	      // important: transclude with no options, just
 	      // to ensure block start and block end
 	      this.template = transclude(this.template)
@@ -15706,30 +15710,6 @@
 	  },
 
 	  /**
-	   * Check what strategy to use for updates.
-	   * 
-	   * If the repeat is simple enough we can use in-place
-	   * updates which simply overwrites existing instances'
-	   * data. This strategy reuses DOM nodes and instances
-	   * as much as possible.
-	   * 
-	   * There are two situations where we have to use the
-	   * more complex but more accurate diff algorithm:
-	   * 1. We are using components with or inside v-repeat.
-	   *    The components could have private state that needs
-	   *    to be preserved across updates.
-	   * 2. We have transitions on the list, which requires
-	   *    precise DOM re-positioning.
-	   */
-
-	  checkUpdateStrategy: function () {
-	    this.needDiff =
-	      this.asComponent ||
-	      this.el.hasAttribute(config.prefix + 'transition') ||
-	      this.template.querySelector('[' + config.prefix + 'component]')
-	  },
-
-	  /**
 	   * Update.
 	   * This is called whenever the Array mutates.
 	   *
@@ -15744,9 +15724,7 @@
 	    } else if (type === 'string') {
 	      data = _.toArray(data)
 	    }
-	    this.vms = this.needDiff
-	      ? this.diff(data, this.vms)
-	      : this.inplaceUpdate(data, this.vms)
+	    this.vms = this.diff(data, this.vms)
 	    // update v-ref
 	    if (this.refID) {
 	      this.vm.$[this.refID] = this.vms
@@ -15756,43 +15734,6 @@
 	        return vm.$el
 	      })
 	    }
-	  },
-
-	  /**
-	   * Inplace update that maximally reuses existing vm
-	   * instances and DOM nodes by simply swapping data into
-	   * existing vms.
-	   *
-	   * @param {Array} data
-	   * @param {Array} oldVms
-	   * @return {Array}
-	   */
-
-	  inplaceUpdate: function (data, oldVms) {
-	    oldVms = oldVms || []
-	    var vms
-	    var dir = this
-	    var alias = dir.arg
-	    var converted = dir.converted
-	    if (data.length < oldVms.length) {
-	      oldVms.slice(data.length).forEach(function (vm) {
-	        vm.$destroy(true)
-	      })
-	      vms = oldVms.slice(0, data.length)
-	      overwrite(data, vms, alias, converted)
-	    } else if (data.length > oldVms.length) {
-	      var newVms = data.slice(oldVms.length).map(function (data, i) {
-	        var vm = dir.build(data, i + oldVms.length)
-	        vm.$before(dir.ref)
-	        return vm
-	      })
-	      overwrite(data.slice(0, oldVms.length), oldVms, alias, converted)
-	      vms = oldVms.concat(newVms)
-	    } else {
-	      overwrite(data, oldVms, alias, converted)
-	      vms = oldVms
-	    }
-	    return vms
 	  },
 
 	  /**
@@ -16003,9 +15944,7 @@
 	      var vm
 	      while (i--) {
 	        vm = this.vms[i]
-	        if (this.needDiff) {
-	          this.uncacheVm(vm)
-	        }
+	        this.uncacheVm(vm)
 	        vm.$destroy()
 	      }
 	    }
@@ -16176,35 +16115,6 @@
 	    ret[i] = i
 	  }
 	  return ret
-	}
-
-	/**
-	 * Helper function to overwrite new data Array on to
-	 * existing vms. Used in `inplaceUpdate`.
-	 *
-	 * @param {Array} arr
-	 * @param {Array} vms
-	 * @param {String|undefined} alias
-	 * @param {Boolean} converted
-	 */
-
-	function overwrite (arr, vms, alias, converted) {
-	  var vm, data, raw
-	  for (var i = 0, l = arr.length; i < l; i++) {
-	    vm = vms[i]
-	    data = raw = arr[i]
-	    if (converted) {
-	      vm.$key = data.$key
-	      raw = data.$value
-	    }
-	    if (alias) {
-	      vm[alias] = raw
-	    } else if (!isObject(raw)) {
-	      vm.$value = raw
-	    } else {
-	      vm._setData(raw)
-	    }
-	  }
 	}
 
 /***/ },
@@ -16701,7 +16611,7 @@
 
 	var _ = __webpack_require__(74)
 	var Watcher = __webpack_require__(55)
-	var dirParser = __webpack_require__(59)
+	var dirParser = __webpack_require__(58)
 
 	module.exports = {
 
