@@ -177,7 +177,7 @@
 <figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">my-component</span> <span class="attribute">v-with</span>=<span class="value">"myName: user.name, myEmail: user.email"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- you can access properties with the new keys --&gt;</span></span><br><span class="line">  </span><span class="expression">&#123;&#123;<span class="variable">myName</span>&#125;&#125;</span><span class="xml"> </span><span class="expression">&#123;&#123;<span class="variable">myEmail</span>&#125;&#125;</span><span class="xml"></span><br><span class="line"><span class="tag">&lt;/<span class="title">my-component</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <h3 id="v-events">v-events</h3><ul>
 <li>This directive can only be used with <code>v-component</code>.</li>
-<li>This directive accepts only keypaths, no expressions.</li>
+<li>This directive accepts either a method name, or a single expression statement.</li>
 </ul>
 <p>Allows a parent instance to listen to events on a child instance. The difference from <code>v-on</code> is that <code>v-events</code> listens to Vue’s component system events created via <code>vm.$emit()</code> rather than DOM events. This directive allows more decoupled parent-child communication without having to hard-code event listeners into the parent component. Note that it can only be used together with <code>v-component</code>, i.e. on the root element of a child component.</p>
 <p><strong>Example:</strong></p>
@@ -188,18 +188,25 @@
 </blockquote>
 <h3 id="v-component">v-component</h3><ul>
 <li>Directive params: <a href="/guide/components.html#Dynamic_Components"><code>keep-alive</code></a>, <a href="/guide/components.html#wait-for"><code>wait-for</code></a>, <a href="/guide/components.html#transition-mode"><code>transition-mode</code></a>, <a href="/guide/components.html#Inline_Template"><code>inline-template</code></a></li>
+<li>Can be made reactive with mustaches</li>
 </ul>
 <p>Compile this element as a child ViewModel with a registered component constructor. This can be used with <code>v-with</code> to inehrit data from the parent. For more details see <a href="/guide/components.html">Component System</a>.</p>
-<h3 id="v-ref">v-ref</h3><p>Register a reference to a child component on its parent for easier access. Only respected when used in combination with <code>v-component</code> or <code>v-repeat</code>. The component instance will be accessible on its parent’s <code>$</code> object. For an example, see <a href="/guide/components.html#Child_Reference">child reference</a>.</p>
-<p>When used with <code>v-repeat</code>, the value will be an Array containing all the child Vue instances corresponding to the Array they are bound to.</p>
-<h3 id="v-el">v-el</h3><p>Register a reference to a DOM element on its owner Vue instance for easier access. e.g. <code>&lt;div v-el=&quot;hi&quot;&gt;</code> will be accessible as <code>vm.$$.hi</code>.</p>
-<h3 id="v-partial">v-partial</h3><p>Replace the element’s innerHTML with a registered partial. Partials can be registered with <code>Vue.partial()</code> or passed inside the <code>partials</code> option.</p>
+<h3 id="v-partial">v-partial</h3><ul>
+<li>Can be made reactive with mustaches</li>
+</ul>
+<p>Replace the element’s innerHTML with a registered partial. Partials can be registered with <code>Vue.partial()</code> or passed inside the <code>partials</code> option.</p>
 <p>Using the mustache tag inside <code>v-partial</code> makes it reactive:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- content will change based on vm.partialId --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">v-partial</span>=<span class="value">"&#123;&#123;partialId&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>You can also use this syntax (which doesn’t support reactivity):</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span>&gt;</span>&#123;&#123;&gt; my-partial&#125;&#125;<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="v-transition">v-transition</h3><p>Notify Vue.js to apply transitions to this element. The transition classes are applied when certain transition-triggering directives modify the element, or when the Vue instance’s DOM manipulation methods are called.</p>
+<h3 id="v-transition">v-transition</h3><ul>
+<li>Can be made reactive with mustaches</li>
+</ul>
+<p>Notify Vue.js to apply transitions to this element. The transition classes are applied when certain transition-triggering directives modify the element, or when the Vue instance’s DOM manipulation methods are called.</p>
 <p>For details, see <a href="/guide/transitions.html">the guide on transitions</a>.</p>
+<h3 id="v-ref">v-ref</h3><p>Register a reference to a child component on its parent for easier access. Only respected when used in combination with <code>v-component</code> or <code>v-repeat</code>. The component instance will be accessible on its parent’s <code>$</code> object. For an example, see <a href="/guide/components.html#Child_Reference">child reference</a>.</p>
+<p>When used with <code>v-repeat</code>, the value will be an Array containing all the child Vue instances corresponding to the Array they are bound to.</p>
+<h3 id="v-el">v-el</h3><p>Register a reference to a DOM element on its owner Vue instance for easier access. e.g. <code>&lt;div v-el=&quot;hi&quot;&gt;</code> will be accessible as <code>vm.$$.hi</code>.</p>
 <h2 id="Empty_Directives">Empty Directives</h2><blockquote>
 <p>Empty directives do not require and will ignore their attribute value.</p>
 </blockquote>
