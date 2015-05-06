@@ -101,7 +101,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var batcher = __webpack_require__(52)
+	var batcher = __webpack_require__(51)
 	var nextTick = __webpack_require__(74).nextTick
 
 	describe('Batcher', function () {
@@ -207,7 +207,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Cache = __webpack_require__(51)
+	var Cache = __webpack_require__(52)
 
 	/**
 	 * Debug function to assert cache state
@@ -8820,6 +8820,105 @@
 /* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var _ = __webpack_require__(74)
+	var MAX_UPDATE_COUNT = 10
+
+	// we have two separate queues: one for directive updates
+	// and one for user watcher registered via $watch().
+	// we want to guarantee directive updates to be called
+	// before user watchers so that when user watchers are
+	// triggered, the DOM would have already been in updated
+	// state.
+	var queue = []
+	var userQueue = []
+	var has = {}
+	var waiting = false
+	var flushing = false
+
+	/**
+	 * Reset the batcher's state.
+	 */
+
+	function reset () {
+	  queue = []
+	  userQueue = []
+	  has = {}
+	  waiting = false
+	  flushing = false
+	}
+
+	/**
+	 * Flush both queues and run the jobs.
+	 */
+
+	function flush () {
+	  flushing = true
+	  run(queue)
+	  run(userQueue)
+	  reset()
+	}
+
+	/**
+	 * Run the jobs in a single queue.
+	 *
+	 * @param {Array} queue
+	 */
+
+	function run (queue) {
+	  // do not cache length because more jobs might be pushed
+	  // as we run existing jobs
+	  for (var i = 0; i < queue.length; i++) {
+	    queue[i].run()
+	  }
+	}
+
+	/**
+	 * Push a job into the job queue.
+	 * Jobs with duplicate IDs will be skipped unless it's
+	 * pushed when the queue is being flushed.
+	 *
+	 * @param {Object} job
+	 *   properties:
+	 *   - {String|Number} id
+	 *   - {Function}      run
+	 */
+
+	exports.push = function (job) {
+	  var id = job.id
+	  if (!id || !has[id] || flushing) {
+	    if (!has[id]) {
+	      has[id] = 1
+	    } else {
+	      has[id]++
+	      // detect possible infinite update loops
+	      if (has[id] > MAX_UPDATE_COUNT) {
+	        _.warn(
+	          'You may have an infinite update loop for the ' +
+	          'watcher with expression: "' + job.expression + '".'
+	        )
+	        return
+	      }
+	    }
+	    // A user watcher callback could trigger another
+	    // directive update during the flushing; at that time
+	    // the directive queue would already have been run, so
+	    // we call that update immediately as it is pushed.
+	    if (flushing && !job.user) {
+	      job.run()
+	      return
+	    }
+	    ;(job.user ? userQueue : queue).push(job)
+	    if (!waiting) {
+	      waiting = true
+	      _.nextTick(flush)
+	    }
+	  }
+	}
+
+/***/ },
+/* 52 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/**
 	 * A doubly linked list-based Least Recently Used (LRU)
 	 * cache. Will keep most recently used items while
@@ -8932,105 +9031,6 @@
 	}
 
 	module.exports = Cache
-
-/***/ },
-/* 52 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var _ = __webpack_require__(74)
-	var MAX_UPDATE_COUNT = 10
-
-	// we have two separate queues: one for directive updates
-	// and one for user watcher registered via $watch().
-	// we want to guarantee directive updates to be called
-	// before user watchers so that when user watchers are
-	// triggered, the DOM would have already been in updated
-	// state.
-	var queue = []
-	var userQueue = []
-	var has = {}
-	var waiting = false
-	var flushing = false
-
-	/**
-	 * Reset the batcher's state.
-	 */
-
-	function reset () {
-	  queue = []
-	  userQueue = []
-	  has = {}
-	  waiting = false
-	  flushing = false
-	}
-
-	/**
-	 * Flush both queues and run the jobs.
-	 */
-
-	function flush () {
-	  flushing = true
-	  run(queue)
-	  run(userQueue)
-	  reset()
-	}
-
-	/**
-	 * Run the jobs in a single queue.
-	 *
-	 * @param {Array} queue
-	 */
-
-	function run (queue) {
-	  // do not cache length because more jobs might be pushed
-	  // as we run existing jobs
-	  for (var i = 0; i < queue.length; i++) {
-	    queue[i].run()
-	  }
-	}
-
-	/**
-	 * Push a job into the job queue.
-	 * Jobs with duplicate IDs will be skipped unless it's
-	 * pushed when the queue is being flushed.
-	 *
-	 * @param {Object} job
-	 *   properties:
-	 *   - {String|Number} id
-	 *   - {Function}      run
-	 */
-
-	exports.push = function (job) {
-	  var id = job.id
-	  if (!id || !has[id] || flushing) {
-	    if (!has[id]) {
-	      has[id] = 1
-	    } else {
-	      has[id]++
-	      // detect possible infinite update loops
-	      if (has[id] > MAX_UPDATE_COUNT) {
-	        _.warn(
-	          'You may have an infinite update loop for the ' +
-	          'watcher with expression: "' + job.expression + '".'
-	        )
-	        return
-	      }
-	    }
-	    // A user watcher callback could trigger another
-	    // directive update during the flushing; at that time
-	    // the directive queue would already have been run, so
-	    // we call that update immediately as it is pushed.
-	    if (flushing && !job.user) {
-	      job.run()
-	      return
-	    }
-	    ;(job.user ? userQueue : queue).push(job)
-	    if (!waiting) {
-	      waiting = true
-	      _.nextTick(flush)
-	    }
-	  }
-	}
 
 /***/ },
 /* 53 */
@@ -9358,7 +9358,7 @@
 	var config = __webpack_require__(56)
 	var Observer = __webpack_require__(77)
 	var expParser = __webpack_require__(70)
-	var batcher = __webpack_require__(52)
+	var batcher = __webpack_require__(51)
 	var uid = 0
 
 	/**
@@ -10368,7 +10368,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Cache = __webpack_require__(51)
+	var Cache = __webpack_require__(52)
 	var cache = new Cache(1000)
 	var argRE = /^[^\{\?]+$|^'[^']*'$|^"[^"]*"$/
 	var filterTokenRE = /[^\s'"]+|'[^']+'|"[^"]+"/g
@@ -11445,7 +11445,7 @@
 
 	var _ = __webpack_require__(74)
 	var Path = __webpack_require__(71)
-	var Cache = __webpack_require__(51)
+	var Cache = __webpack_require__(52)
 	var expressionCache = new Cache(1000)
 
 	var allowedKeywords =
@@ -11704,7 +11704,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Cache = __webpack_require__(51)
+	var Cache = __webpack_require__(52)
 	var pathCache = new Cache(1000)
 	var identRE = /^[$_a-zA-Z]+[\w$]*$/
 
@@ -12006,7 +12006,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(74)
-	var Cache = __webpack_require__(51)
+	var Cache = __webpack_require__(52)
 	var templateCache = new Cache(1000)
 	var idSelectorCache = new Cache(1000)
 
@@ -12270,7 +12270,7 @@
 /* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Cache = __webpack_require__(51)
+	var Cache = __webpack_require__(52)
 	var config = __webpack_require__(56)
 	var dirParser = __webpack_require__(58)
 	var regexEscapeRE = /[-.*+?^${}()|[\]\/\\]/g
