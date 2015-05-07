@@ -4671,6 +4671,27 @@
 	        template: '<test-component v-repeat="items"></test-component>',
 	        components: {
 	          'test-component': {
+	            template: '{{$index}} {{a}}'
+	          }
+	        }
+	      })
+	      expect(el.innerHTML).toBe(
+	        '<test-component>0 1</test-component>' +
+	        '<test-component>1 2</test-component>' +
+	        '<test-component>2 3</test-component>' +
+	        '<!--v-repeat-->'
+	      )
+	    })
+
+	    it('custom element component with replace:true', function () {
+	      var vm = new Vue({
+	        el: el,
+	        data: {
+	          items: [{a:1}, {a:2}, {a:3}]
+	        },
+	        template: '<test-component v-repeat="items"></test-component>',
+	        components: {
+	          'test-component': {
 	            template: '<p>{{$index}} {{a}}</p>',
 	            replace: true
 	          }
@@ -16171,6 +16192,10 @@
 	        merged._asComponent = true
 	        merged._parent = this.vm
 	        this.template = transclude(this.template, merged)
+	        // Important: mark the template as a root node so that
+	        // custom element components don't get compiled twice.
+	        // fixes #822
+	        this.template.__vue__ = true
 	        this._linkFn = compile(this.template, merged)
 	      } else {
 	        // to be resolved later
